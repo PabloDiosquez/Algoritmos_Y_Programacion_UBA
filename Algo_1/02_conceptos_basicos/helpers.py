@@ -3,7 +3,7 @@ def get_int(mensaje):
     """
     return int(input(mensaje))
 
-def ejercicio(titulo, resultado):
-    """Imprime por consola el ejercicio de título dado con el resultado dado.
+def get_float(mensaje):
+    """Describe el número 'real' que lee por consola.
     """
-    print(f"\nEjercicio: {titulo} {resultado}")
+    return float(input(mensaje))

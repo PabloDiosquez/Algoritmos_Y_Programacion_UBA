@@ -11,6 +11,8 @@ print("- Ejercicio 2.6.1.a -")
 ciclo_definido(10, 20)
 
 def saludar_amigos(numero_amigos):
+    """Imprime por pantalla un saludo para cada amigo cuyo nombre lee por consola.
+    """
     for _ in range(numero_amigos):
         nombre = input("Nombre: ")
         print(f"Hola {nombre}!")
@@ -19,6 +21,8 @@ def saludar_amigos(numero_amigos):
 #saludar_amigos(5)
 
 def saludar_amigos():
+    """Imprime por pantalla un saludo para cada amigo cuyo nombre lee por consola.
+    """
     numero_amigos = get_int("¿A cuántos amigos desea saludar?")
     for _ in range(numero_amigos):
         nombre = input("Nombre: ")

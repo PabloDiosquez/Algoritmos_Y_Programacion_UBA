@@ -18,8 +18,17 @@ def suma_5_cuadrados():
     elevados al cuadrado.
     """
     total = 0
-    for i in range(1,6):
+    for i in range(6):
         total += cuad(i)
     return total
 
-print(suma_5_cuadrados())
+# print(suma_5_cuadrados())
+
+def suma_n_cuadrados(n):
+    """Describe la suma de los primeros n números naturales
+    elevados al cuadrado.
+    """
+    total = 0
+    for i in range(n+1):
+        total += cuad(i)
+    return total

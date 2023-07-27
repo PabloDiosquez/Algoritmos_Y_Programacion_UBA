@@ -54,6 +54,43 @@ func main() {
 	// Funciones
 	fmt.Println(sumar(3, 6))        // 9
 	fmt.Println(sumarYRestar(2, 7)) // 9 -5
+
+	// ----------------------------
+	// Estructuras de control 🕹
+
+	// IF 🐸
+	// if condición {
+	// 		Bloque de código
+	// }
+
+	// if condición {
+	// 	Bloque de código 1
+	// }else {
+	// 	Bloque de código 2
+	// }
+
+	// if condición1 {
+	// 	Bloque de código 1
+	// }else if condición2 {
+	// 	Bloque de código 2
+	// }else {
+	// 	Bloque de código 3
+	// }
+
+	// FOR 🥶
+	// for ini; condición; incremento{
+	// 	Bloque de código
+	// }
+
+	// Imprime los números del 0 al 10 de uno en uno.
+	for i := 0; i <= 10; i++ {
+		fmt.Printf("%d", i) // Imprime con formato
+	}
+
+	// WHILE ⚠
+	// for condición {
+	// 		Bloque de código
+	// }
 }
 
 // Funciones - I

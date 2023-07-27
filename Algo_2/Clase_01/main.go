@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	fmt.Println("Hola Mundo!!")
@@ -91,6 +94,42 @@ func main() {
 	// for condición {
 	// 		Bloque de código
 	// }
+
+	// Switch 🔌
+
+	fmt.Println("¿Qué día es hoy?")
+	today := time.Now().Weekday()
+	switch today {
+	case time.Monday:
+		fmt.Println("Hoy es lunes =:(")
+	case time.Thursday:
+		fmt.Println("Hoy es martes =:(")
+	// ...
+	case time.Saturday, time.Sunday:
+		fmt.Println("Finde! =:)")
+	default:
+		fmt.Println("🤔")
+	}
+
+	// Variables II - Shadowing
+	g := 5
+	for i := 0; i < 4; i++ {
+		g := i
+		fmt.Println(g) // 0, 1, 2, 3
+	}
+	fmt.Println(g) // 5
+
+	h := -1
+	if true {
+		h := 2
+		fmt.Println(h)
+	}
+	fmt.Println(h)
+
+	// Defer ➡ El defer me permite diferir la ejecución de una instrucción al final
+	// de la ejecución de la función en la que se encuentra.
+
+	diferida()
 }
 
 // Funciones - I
@@ -108,4 +147,9 @@ func sumarYRestar(a, b int) (suma int, resta int) {
 	suma = a + b
 	resta = a - b
 	return
+}
+
+func diferida() {
+	defer fmt.Print(" Mundo")
+	fmt.Print("Hola")
 }

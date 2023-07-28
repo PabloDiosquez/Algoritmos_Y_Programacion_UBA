@@ -1,0 +1,7 @@
+go 1.20
+
+use (
+	./Algo_2/Clase_01
+	./Algo_2/Clase_02
+	./Algo_2/Clase_03
+)

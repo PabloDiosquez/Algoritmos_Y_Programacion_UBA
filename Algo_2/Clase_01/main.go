@@ -43,7 +43,7 @@ func main() {
 	// z1, z2 := -1, -12
 
 	// Constantes 🥶
-	const constante1 int = 4
+	// const constante1 int = 4
 
 	// ProTip 🙊
 
@@ -109,6 +109,18 @@ func main() {
 		fmt.Println("Finde! =:)")
 	default:
 		fmt.Println("🤔")
+	}
+
+	// Switch sin variable 🔌
+
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Buenos días! ☀")
+	case t.Hour() < 18:
+		fmt.Println("Buenas tardes! 🌄")
+	default:
+		fmt.Println("Buenas noches! 🌃")
 	}
 
 	// Variables II - Shadowing

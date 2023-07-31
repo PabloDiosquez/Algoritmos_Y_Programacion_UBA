@@ -38,10 +38,18 @@ type Direccion struct {
 	numero int
 }
 
+func (dir Direccion) String() string {
+	return fmt.Sprintf("Calle %s al %d", dir.calle, dir.numero)
+}
+
 type Persona struct {
 	nombre       string
 	direccion    Direccion
 	madre, padre *Persona
+}
+
+func (p *Persona) Direccion() string {
+	return fmt.Sprintf("%s vive en %s", p.nombre, p.direccion.String())
 }
 
 func main() {
@@ -98,6 +106,7 @@ func main() {
 	angie := Persona{"Angelina Jolie", Direccion{"Beverly Hills", 123}, nil, &jon}
 
 	fmt.Printf(angie.padre.nombre)
+	// fmt.Printf(angie.direccion.String())
 
 }
 

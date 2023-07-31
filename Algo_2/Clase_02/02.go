@@ -49,6 +49,8 @@ func main() {
 	modificarConPuntero(&arreglo)
 	fmt.Println(arreglo)
 
+	// Slices 🤔
+
 }
 
 func pasaUnDia(valor int) {

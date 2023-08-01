@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strconv"
 )
 
 type Punto struct { // Tipo nuevo
@@ -107,6 +108,17 @@ func main() {
 
 	fmt.Printf(angie.padre.nombre)
 	// fmt.Printf(angie.direccion.String())
+
+	// --------------------------------------
+	// ¿Cómo manejar errores?
+	str := "abc"
+
+	entero, err := strconv.Atoi(str)
+
+	if err != nil {
+		fmt.Printf("No se pudo convertir: %v\n", err)
+	}
+	fmt.Println("El entero es:", entero)
 
 }
 

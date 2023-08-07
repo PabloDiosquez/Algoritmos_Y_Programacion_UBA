@@ -2,7 +2,6 @@
 # a) Dado un número entero n, indicar si es par o no.
 # b) Dado un número entero n, indicar si es primo o no.
 
-from helpers import get_int
 # a)
 def es_par(n: int) -> bool:
     """Indica si el número dado es par.

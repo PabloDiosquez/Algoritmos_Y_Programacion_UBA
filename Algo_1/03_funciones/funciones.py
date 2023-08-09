@@ -21,9 +21,10 @@ print(norma_vectorial(3,6))
 # nombre = input("Nombre?: ")
 # print(nombre)
 
-x = float(input("Ingrese el valor de x: "))
-y = float(input("Ingrese el valor de y: "))
-print("La norma vectorial es: ", norma_vectorial(x, y))
+def prueba():
+    x = float(input("Ingrese el valor de x: "))
+    y = float(input("Ingrese el valor de y: "))
+    print("La norma vectorial es: ", norma_vectorial(x, y))
 
 def a_hms(segundos):
     h = segundos // 3600
@@ -33,3 +34,19 @@ def a_hms(segundos):
 
 hms = a_hms(3601)
 h, m, s = a_hms(3601) # Desempaquetar 📦  
+
+# Alcance de variables 🐣 
+
+x = 'x'
+y = 'y'
+w = 'w'
+
+def f(x):
+    y = 'Y'
+    print(w, x, y)
+    z = 'Z'
+    print(z)
+
+f('X')
+print(w, x, y)
+# print(z)

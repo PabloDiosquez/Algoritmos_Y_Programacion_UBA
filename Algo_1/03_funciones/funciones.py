@@ -21,7 +21,7 @@ print(norma_vectorial(3,6))
 # nombre = input("Nombre?: ")
 # print(nombre)
 
-def prueba():
+def imprimir_norma():
     x = float(input("Ingrese el valor de x: "))
     y = float(input("Ingrese el valor de y: "))
     print("La norma vectorial es: ", norma_vectorial(x, y))
@@ -49,4 +49,14 @@ def f(x):
 
 f('X')
 print(w, x, y)
-# print(z)
+# print(z) ➡ name 'z' is not defined
+
+# constante global (no cambia su valor a lo largo de la ejecución del programa)
+
+NOMBRE_APP = "AlgoApp"
+
+def bienvenida(nombre: str):
+    return f"Hola {nombre}! Te damos la bienvenida a {NOMBRE_APP}"
+
+def adios(nombre: str):
+    return f"Adiós {nombre}! Gracias por usar {NOMBRE_APP}"

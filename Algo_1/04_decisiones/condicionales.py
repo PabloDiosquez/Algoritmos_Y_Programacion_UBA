@@ -35,6 +35,21 @@ def miki_moko3():
             print("Moko")
         else:
             print(i)
+
+def miki_moko4():
+    for i in range(1, 101):
+        print(_miki_moko4(i))
+
+def _miki_moko4(i: int):
+        if i % 3 == 0:
+            if i % 5 == 0:
+                return "MikiMoko"
+            else:
+                return "Miki"
+        elif i % 5 == 0:
+            return "Moko"
+        else:
+            return i
           
 def miki_moko(n: int):
     for i in range(1, n+1):
@@ -43,5 +58,5 @@ def miki_moko(n: int):
         elif not i % 5:             print("Moko")
         else:                       print(i)
 
-# miki_moko3()
+# miki_moko4()
 # miki_moko(100)

@@ -44,12 +44,10 @@ def _miki_moko4(i: int):
         if i % 3 == 0:
             if i % 5 == 0:
                 return "MikiMoko"
-            else:
-                return "Miki"
+            return "Miki"
         elif i % 5 == 0:
             return "Moko"
-        else:
-            return i
+        return i
           
 def miki_moko(n: int):
     for i in range(1, n+1):
@@ -60,3 +58,33 @@ def miki_moko(n: int):
 
 # miki_moko4()
 # miki_moko(100)
+
+# Bonus track ☂ 
+# Instrucción assert 
+def factorial(n: int) -> int:
+    """ Describe el factorial del número dado.
+    """
+    if n == 0: return 1
+    return factorial(n-1)*n 
+
+# if + return 
+def es_par(n: int) -> bool:
+    "Indica si el número dado es par."
+    return not n % 2  
+
+def casos_de_prueba():
+    # factorial()
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+    assert factorial(2) == 2
+    assert factorial(3) == 6
+    assert factorial(4) == 24
+    # es_par()
+    assert es_par(0)
+    assert not es_par(1)
+    assert es_par(2)
+    assert not es_par(3)
+    assert es_par(4)
+    assert not es_par(5)
+
+casos_de_prueba()

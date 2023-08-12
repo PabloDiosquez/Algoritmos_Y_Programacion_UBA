@@ -56,14 +56,23 @@ def caja_registradora():
     while True:
         precio = float(input("¿Precio del producto?: "))
         if precio == CENTINELA: 
-            break
+            break       # salir del ciclo
         if precio < 0:
             print("Asegúrese de ingresar precios válidos.")          
-            continue
-
+            continue    # saltar a la sig iteración
         suma += precio
         print("La suma hasta ahora es:", suma)
     print("La suma total es:", suma)
     print("Adiós 🖖🏼")
 
-caja_registradora()
+# caja_registradora()
+
+# ##############
+# Ejercicio 🐸
+def mostrar_coords(columnas: int, filas: int):
+    for nro_fila in range(filas):
+        for nro_columna in range(columnas):
+            print(nro_fila, nro_columna, sep=",", end="  ")
+        print()
+
+mostrar_coords(3,4)

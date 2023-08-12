@@ -17,4 +17,22 @@ def caja_registradora_version1():
         suma += precio   # suma = suma + precio
         print("La suma es:", suma) 
 
-caja_registradora_version1()
+# caja_registradora_version1()
+
+# Ciclo indefinido 🌀 
+
+# while <condición>:
+#     <instrucciones>
+
+def caja_registradora_version2():
+    suma = 0
+
+    while True:
+        precio = float(input("Precio del producto -- 0 para cortar --: "))
+        if precio == 0: break 
+        suma += precio 
+        print("La suma es:", suma)
+        
+    print("\nLa suma total es:", suma)
+
+caja_registradora_version2()

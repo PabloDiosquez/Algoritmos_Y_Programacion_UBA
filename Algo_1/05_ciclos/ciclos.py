@@ -1,4 +1,4 @@
-# Ciclos definidos 🌀
+# CICLO DEFINIDO 🌀
 
 # ∀ x ∈ a <iterable>: 
 #   procesar x 
@@ -19,20 +19,21 @@ def caja_registradora_version1():
 
 # caja_registradora_version1()
 
-# Ciclo indefinido 🌀 
+# CICLO INDEFINIDO 🌀 
 
 # while <condición>:
 #     <instrucciones>
+# Patrón con centinela 🎯
 
 def caja_registradora_version2():
     suma = 0
-
-    while True:
-        precio = float(input("Precio del producto -- 0 para cortar --: "))
-        if precio == 0: break 
+    centinela = input("¿Precio del producto?: ")
+    while centinela != "chau":
+        precio = float(centinela)
         suma += precio 
         print("La suma es:", suma)
-        
+        centinela = input("¿Precio del producto?: ")
+
     print("\nLa suma total es:", suma)
 
 caja_registradora_version2()

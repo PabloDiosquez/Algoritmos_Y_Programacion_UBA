@@ -50,13 +50,20 @@ def caja_registradora_version3():
     
 # caja_registradora_version3()
 
+CENTINELA = 0
 def caja_registradora():
     suma = 0
     while True:
         precio = float(input("¿Precio del producto?: "))
-        if precio == 0: break
+        if precio == CENTINELA: 
+            break
+        if precio < 0:
+            print("Asegúrese de ingresar precios válidos.")          
+            continue
+
         suma += precio
         print("La suma hasta ahora es:", suma)
     print("La suma total es:", suma)
+    print("Adiós 🖖🏼")
 
 caja_registradora()

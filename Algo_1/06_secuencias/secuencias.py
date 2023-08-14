@@ -145,6 +145,22 @@ def cantidad_en_de_letras__(texto: str, letra: str) -> int:
         if caracter == letra: contador += 1
     return contador 
 
+def es_numerico(cadena: str):
+    """ Indica si todos los caracteres de la cadena son números enteros.
+        Describe True si int(cadena) funciona.
+    """
+    if es_vacía(cadena): return False # Caso borde
+
+    NÚMEROS = "0123456789"
+    for caracter in cadena:
+        if caracter not in NÚMEROS: return False 
+    return True 
+    
+def es_vacía(cadena: str):
+    """ Indica si la cadena dada está vacía.
+    """
+    return not len(cadena)
+
 def main():
     total = len(LETRA_OROZCO)
     cantidad_o = cantidad_letras_o(LETRA_OROZCO)
@@ -173,5 +189,16 @@ def main():
     sl2 = lista[:3]   # Obtiene [1, 2, 3]
     sl3 = lista[2:]   # Obtiene [3, 4, 5]
     sl4 = lista[::2]  # Obtiene [1, 3, 5]
+
+    # Pruebas sobre la función es_numerico()
+    assert     es_numerico("345")  # True 
+    assert not es_numerico("x345") # False 
+    assert not es_numerico("")     # False 
+    assert not es_numerico("3.5")  # False 
+
+    # Matrices 🪓
+
+    M = [[2, -1, 4], [5, 0, 2]] # Secuencia de columnas
+    print(M[1][1]) # 0
 
 main()

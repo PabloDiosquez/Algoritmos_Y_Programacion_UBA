@@ -128,6 +128,8 @@ Choto. Stop. Stop
 """
 
 def cantidad_letras_o(letra: str):
+    """ Describe la cantidad de letras 'o' en el string dado.
+    """
     cantidad = 0
     # Recorremos con un ciclo todos los caracteres de la canción
         # Si es una 'o' ➡ cantidad = cantidad + 1
@@ -136,7 +138,7 @@ def cantidad_letras_o(letra: str):
     return cantidad 
 
 def cantidad_en_de_letras__(texto: str, letra: str) -> int:
-    """Describe la cantidad de letras 'letra' en el texto dado.
+    """ Describe la cantidad de letras 'letra' en el texto dado.
     """
     contador = 0
     for caracter in texto.lower():
@@ -146,7 +148,8 @@ def cantidad_en_de_letras__(texto: str, letra: str) -> int:
 def main():
     total = len(LETRA_OROZCO)
     cantidad_o = cantidad_letras_o(LETRA_OROZCO)
-    print(f"La letra de 'Los Orozco' tiene {cantidad_o} letras 'o' sobre un total de {total} caracteres.")
+    mensaje = f"La letra de 'Los Orozco' tiene {cantidad_o} letras 'o' sobre un total de {total} caracteres." # interpolación de cadenas 
+    print(mensaje)
 
     s = "python"                                                    # ➡ inmutables 
     print(type(s))

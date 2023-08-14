@@ -131,30 +131,44 @@ def cantidad_letras_o(letra: str):
     cantidad = 0
     # Recorremos con un ciclo todos los caracteres de la canción
         # Si es una 'o' ➡ cantidad = cantidad + 1
-    for i in range(len(letra)):
-        if letra[i] in 'oOóÓ': cantidad += 1 # operador in 
+    for indice in range(len(letra)):
+        if letra[indice] in 'oOóÓöÖ': cantidad += 1 # operador in 
     return cantidad 
 
-def cantidad_en_de_letras(texto: str, letra: str) -> int:
+def cantidad_en_de_letras__(texto: str, letra: str) -> int:
     """Describe la cantidad de letras 'letra' en el texto dado.
     """
     contador = 0
-    for c in texto.lower():
-        if c == letra: contador += 1
+    for caracter in texto.lower():
+        if caracter == letra: contador += 1
     return contador 
 
-
 def main():
-    cantidad= cantidad_en_de_letras(LETRA_OROZCO, 'o')
-    print("'Los Orozco' tiene", cantidad, "letras 'o'")
+    total = len(LETRA_OROZCO)
+    cantidad_o = cantidad_letras_o(LETRA_OROZCO)
+    print(f"La letra de 'Los Orozco' tiene {cantidad_o} letras 'o' sobre un total de {total} caracteres.")
 
-    s = "python"
+    s = "python"                                                    # ➡ inmutables 
     print(type(s))
 
-    t = (1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3))
+    t = (1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3))  # ➡ inmutables
     print(type(t))
 
-    L = [1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3)]  
+    L = [1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3)]  # ➡   mutables
     print(type(L))  
+
+    # Slices 🐸
+
+    # Los slices en Python son una forma conveniente de obtener una porción o subconjunto de elementos de una secuencia, como una lista, una cadena de caracteres o una tupla. Se definen utilizando la sintaxis [inicio:fin:paso], donde:
+
+    # inicio es el índice de inicio del slice (inclusive).
+    # fin es el índice de fin del slice (exclusivo).
+    # paso es el tamaño del salto entre elementos (opcional).
+
+    lista = [1, 2, 3, 4, 5]
+    sl1 = lista[1:4]  # Obtiene [2, 3, 4]
+    sl2 = lista[:3]   # Obtiene [1, 2, 3]
+    sl3 = lista[2:]   # Obtiene [3, 4, 5]
+    sl4 = lista[::2]  # Obtiene [1, 3, 5]
 
 main()

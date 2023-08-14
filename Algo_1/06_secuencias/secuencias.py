@@ -1,6 +1,6 @@
 #¿Cuántas letras 'o' tiene 'Los Orozco'?
  
-c ="""
+LETRA_OROZCO ="""
 Nosotros no somos como los Orozco
 Yo los conozco, son ocho los monos:
 Pocho, Toto, Cholo, Tom
@@ -127,10 +127,34 @@ Solo como Don Bosco con poncho
 Choto. Stop. Stop
 """
 
-def cantidad_de_letras_en(letra: str, texto: str) -> int:
+def cantidad_letras_o(letra: str):
+    cantidad = 0
+    # Recorremos con un ciclo todos los caracteres de la canción
+        # Si es una 'o' ➡ cantidad = cantidad + 1
+    for i in range(len(letra)):
+        if letra[i] in 'oOóÓ': cantidad += 1 # operador in 
+    return cantidad 
+
+def cantidad_en_de_letras(texto: str, letra: str) -> int:
     """Describe la cantidad de letras 'letra' en el texto dado.
     """
     contador = 0
-    for l in texto:
-        if l == letra: contador += 1
+    for c in texto.lower():
+        if c == letra: contador += 1
     return contador 
+
+
+def main():
+    cantidad= cantidad_en_de_letras(LETRA_OROZCO, 'o')
+    print("'Los Orozco' tiene", cantidad, "letras 'o'")
+
+    s = "python"
+    print(type(s))
+
+    t = (1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3))
+    print(type(t))
+
+    L = [1, 2, 3.5, "esto es una cadena de caracteres", (1, 2, 3)]  
+    print(type(L))  
+
+main()

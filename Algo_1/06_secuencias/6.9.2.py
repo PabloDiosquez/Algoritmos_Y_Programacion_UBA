@@ -40,17 +40,39 @@ def caracter____si__sino__(caracter_nuevo, condición, caracter):
 # 'X' debería devolver 'su clave es: XXXX'
 
 def reemplazar_dígitos_por_caracter(cadena: str, caracter_nuevo: str) -> str:
+    """
+    """
     cadena_nueva = str()
     for caracter in cadena:
         cadena_nueva += reemplazar__por__si_es_dígito(caracter, caracter_nuevo)
     return cadena_nueva
 
 def reemplazar__por__si_es_dígito(caracter_viejo, caracter_nuevo):
+    """
+    """
     if es__dígito(caracter_viejo):
         return caracter_nuevo
     return caracter_viejo
 
 def es__dígito(caracter):
+    """
+    """
     return caracter in "0123456789"
 
 # print(reemplazar_dígitos_por_caracter('su clave es: 1540', 'X'))
+
+# d) Inserte el caracter cada 3 dígitos en la cadena. Ej. '2552552550' y '.' debería devolver '255.255.255.0'
+
+def insertar_en____cada__(cadena: str, caracter_nuevo: str, tanto: int) -> str:
+    """ Inserta el caracter dado cada 'tanto' en la cadena dada.
+    """
+    # cadena_nueva = str()
+    # cadena_en_slices = [cadena[i:i+3] for i in range(0, len(cadena), tanto)]
+    # for índice in range(len(cadena_en_slices)-1):
+    #     cadena_nueva += f'{cadena_en_slices[índice]}.'
+    # cadena_nueva += cadena_en_slices[-1]
+    # return cadena_nueva
+
+    return caracter_nuevo.join([cadena[i:i+3] for i in range(0, len(cadena), 3)])
+
+# print(insertar_en____cada__('2552552550', '.', 3))

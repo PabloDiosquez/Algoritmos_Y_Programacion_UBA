@@ -42,7 +42,7 @@ def es_vocal(caracter: str) -> bool:
 # devolver 'vistaerou'.
 
 def switchear_vocales_por_su_siguiente(cadena: str) -> str:
-    """ 
+    """ Dada una cadena de caracteres reemplaza cada vocal por su siguiente.
     """
     cadena_switcheada = str()
     for caracter in cadena: 
@@ -50,7 +50,7 @@ def switchear_vocales_por_su_siguiente(cadena: str) -> str:
     return cadena_switcheada
 
 def próxima_vocal_si(caracter: str, condición: bool):
-    """ 
+    """ Describe la vocal siguiente a la dada si se cumple la condición dada.
     """
     if condición:
         return vocal_siguiente(caracter)
@@ -76,7 +76,17 @@ def vocal_siguiente(vocal: str) -> str:
 def es_palíndromo(cadena: str) -> bool:
     """ Indica si la cadena dada es un palíndromo.
     """
-    return not es_vacía(cadena) and cadena == cadena[::-1]
+    return not es_vacía(cadena) and eliminar_espacios(cadena) == eliminar_espacios(cadena_invertida(cadena))
+
+def cadena_invertida(cadena: str) -> str:
+    """ Describe la cadena dada al revés.
+    """
+    return cadena[::-1]
+
+def eliminar_espacios(cadena: str) -> str:
+    """ Describe la cadena dada comprimida (sin espacios).
+    """
+    return cadena.replace(' ','')
 
 def es_vacía(cadena: str) -> bool:
     """ Indica si la cadena dada es vacía.

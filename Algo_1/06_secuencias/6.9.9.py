@@ -16,3 +16,23 @@
 # ¿Cuál es tu número favorito? [-50..50]: -16
 # >>> z
 # -16
+
+def pedir_entero(mensaje: str, mín: int, máx: int):
+    while True:
+        número = input(mensaje)
+        if número[1:].isdecimal() and mín <= int(número) <= máx: break 
+        print(f"Por favor ingresa un número entre {mín} y {máx}.")
+    return número     
+
+def pedir_entero(mensaje, min, max):
+    while True:
+        try:
+            valor = int(input(mensaje))
+            if valor < min or valor > max:
+                print(f"Por favor, ingresa un número entre {min} y {max}.")
+            else:
+                return valor
+        except ValueError:
+            print("Por favor, ingresa un número entero válido.") 
+
+# print(pedir_entero("¿Cuál es tu número favorito?", -50, 50))

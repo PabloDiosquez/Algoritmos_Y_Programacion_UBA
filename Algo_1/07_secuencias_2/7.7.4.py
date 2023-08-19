@@ -31,7 +31,18 @@ def son_ortogonales(vector1: tuple, vector2: tuple) -> bool:
 # c) Escribir una función que reciba dos vectores y devuelva si son paralelos o no.
 
 def son_paralelos(vector1: tuple, vector2: tuple) -> bool:
-    pass 
+    """ Indica si los dos vectores dados son paralelos.
+        Precondición:
+            Los vectores dados no deben ser iguales al vector nulo.
+    """
+    if not len(vector1) or not len(vector2): return False
+     
+    for índice in range(len(vector1)):
+        if   not vector1[índice] and not vector2[índice]:                  continue
+        elif not vector1[índice] or not vector2[índice] :                  return False 
+        elif vector1[índice] / vector2[índice] != vector1[0] / vector2[0]: return False 
+
+    return True  
 
 # d) Escribir una función que reciba un vector y devuelva su norma.
 
@@ -50,3 +61,8 @@ def norma_vectorial(vector: tuple) -> float:
     for número in vector:
         norma += pow(número, 2)
     return pow(norma, 0.5)  
+
+def pruebas():
+    assert son_paralelos((1,2,3), (2,4,6))
+
+pruebas() 

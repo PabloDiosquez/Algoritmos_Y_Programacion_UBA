@@ -20,5 +20,33 @@ def producto_escalar(vector1: tuple, vector2: tuple) -> float:
     return producto_escalar
 
 # b) Escribir una función que reciba dos vectores y devuelva si son o no ortogonales.
+
+def son_ortogonales(vector1: tuple, vector2: tuple) -> bool:
+    """ Indica si los vectores dados son ortogonales.
+        Precondición:
+            Los dos vectores dados deben tener la misma dimensión.
+    """
+    return producto_escalar(vector1, vector2) == 0
+
 # c) Escribir una función que reciba dos vectores y devuelva si son paralelos o no.
+
+def son_paralelos(vector1: tuple, vector2: tuple) -> bool:
+    pass 
+
 # d) Escribir una función que reciba un vector y devuelva su norma.
+
+def norma_vectorial2D(vector: tuple) -> float:
+    """ Describe la norma del vector dado.
+        Precondición:
+            El vector dado debe ser de dos dimensiones.
+    """
+    vx, vy = vector
+    return pow(pow(vx, 2) + pow(vy, 2), 0.5)
+
+def norma_vectorial(vector: tuple) -> float:
+    """ Describe la norma del vector dado.
+    """
+    norma = 0
+    for número in vector:
+        norma += pow(número, 2)
+    return pow(norma, 0.5)  

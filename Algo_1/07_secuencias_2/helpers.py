@@ -46,3 +46,13 @@ def singular_si(elemento, condición):
     if condición:
         return [elemento]
     return []
+
+def imprimir_lista(lista: list) -> None:
+    """ Imprime por consola los elementos de la lista dada.
+        Parámetros:
+            - lista (list): La lista de elementos a imprimir.
+        Retorna:
+            - None 
+    """
+    for elemento in lista:
+        print(elemento, end=" ")

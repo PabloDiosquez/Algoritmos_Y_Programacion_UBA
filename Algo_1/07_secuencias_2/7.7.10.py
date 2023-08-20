@@ -5,6 +5,17 @@ from random import randint
 # a) Escribir una función que reciba dos matrices y devuelva la suma.
 # b) Escribir una función que reciba dos matrices y devuelva el producto.
 
+# a) 
+def suma_matrices(matriz1: list[list], matriz2: list[list]):
+    """
+    """
+    pass 
+
+# b)
+def producto_matrices(matriz1: list[list], matriz2: list[list]):
+    """
+    """
+    pass 
 
 # -------------------------------------------------------------------------- # 
 # La forma más usual de representar matrices es mediante una lista de filas 🐣

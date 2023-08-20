@@ -1,15 +1,31 @@
-from helpers import imprimir_lista
+from helpers import imprimir_lista, es_vacía, sumas_elementos_listas
 from random import randint
 
 # Matrices.
-# a) Escribir una función que reciba dos matrices y devuelva la suma.
+# a) Escribir una función que reciba dos matrices y devuelva la sumas.
 # b) Escribir una función que reciba dos matrices y devuelva el producto.
 
 # a) 
-def suma_matrices(matriz1: list[list], matriz2: list[list]):
+def sumas_matrices(matriz1: list[list], matriz2: list[list]):
+    """ Describe la sumas de las dos matrices dadas.
+        Precondiciones:
+            - Las matrices dadas deben ser del mismo orden.
+            - Los elementos de las matrices dadas deben soportar el operador +.
+        - Parámetros:
+            - matriz1 (list[list[a]]): La primera de las matrices a sumasr.
+            - matriz2 (list[list[a]]): La segunda de las matrices a sumasr.
+        Retorna:
+            - matriz (list[list[a]]): sumas de las dos matrices dadas.
     """
-    """
-    pass 
+    
+    if es_vacía(matriz1):   return matriz2
+    elif es_vacía(matriz2): return matriz1
+
+    primer_fila_matriz1 = matriz1[0]
+    primer_fila_matriz2 = matriz2[0]
+    matriz1.remove(primer_fila_matriz1)
+    matriz2.remove(primer_fila_matriz2)
+    return [sumas_elementos_listas(primer_fila_matriz1, primer_fila_matriz2)] + sumas_matrices(matriz1, matriz2)
 
 # b)
 def producto_matrices(matriz1: list[list], matriz2: list[list]):
@@ -19,7 +35,7 @@ def producto_matrices(matriz1: list[list], matriz2: list[list]):
 
 # -------------------------------------------------------------------------- # 
 # La forma más usual de representar matrices es mediante una lista de filas 🐣
-m = [[1, 2, 3], [4, 5, 6]]
+# m = [[1, 2, 3], [4, 5, 6]]
 
 def imprimir_matriz(matriz: list[list]):
     """
@@ -60,4 +76,10 @@ def crear_matriz_xy(cantidad_filas: int, cantidad_columnas: int):
         matriz.append(fila)
     return matriz
 
-imprimir_matriz(crear_matriz_xy(3,3))
+# imprimir_matriz(crear_matriz_xy(3,4))
+
+m = [[1, 2, 3], [4, 5, 6]]
+n = [[2, 3, 5], [1,9, 0]]
+
+
+imprimir_matriz(sumas_matrices(m, n))

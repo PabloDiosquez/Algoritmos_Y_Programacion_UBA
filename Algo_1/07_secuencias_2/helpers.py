@@ -56,3 +56,11 @@ def imprimir_lista(lista: list) -> None:
     """
     for elemento in lista:
         print(elemento, end=" ")
+
+def sumas_elementos_listas(lista1: list, lista2: list) -> list:
+    """
+    """
+    sumas = list()
+    for i in range(len(lista1)):
+        sumas.append(lista1[i] + lista2[i])
+    return sumas

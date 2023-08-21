@@ -79,7 +79,7 @@ def crear_matriz_xy(cantidad_filas: int, cantidad_columnas: int):
 # imprimir_matriz(crear_matriz_xy(3,4))
 
 m = [[1, 2, 3], [4, 5, 6]]
-n = [[2, 3, 5], [1,9, 0]]
-
+n = [[2, 3], [1,6], [1,8]]
 
 imprimir_matriz(sumas_matrices(m, n))
+imprimir_matriz(producto_matrices(m, n))

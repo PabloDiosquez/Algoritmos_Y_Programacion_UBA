@@ -2,6 +2,8 @@
 
 def búsqueda_lineal(secuencia, elemento):
     """
+    Si 'elemento' está en la secuencia dada describe su posición en la misma; de lo
+    contrario devuelve -1.
     """
     for índice, valor in secuencia:
         if valor == elemento: return índice
@@ -9,7 +11,11 @@ def búsqueda_lineal(secuencia, elemento):
 
 def búsqueda_binaria(secuencia, elemento):
     """
-
+    Si 'elemento' está en la secuencia dada describe su posición en la misma; de lo
+    contrario devuelve -1.
+    Parámetros:
+        - secuencia: Lista de elementos ordenada.
+        - elemento : Elemento a buscar.
     Precondición:
         - La secuencia dada debe estar ordenada.
     """

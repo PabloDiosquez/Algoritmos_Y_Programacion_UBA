@@ -1,3 +1,22 @@
+# Errores de programación
+
+# def cuad(n)
+#     """
+#     """
+#     return n ** n 
+
+# n = input("Ingrese un número: ")
+# print(n + " al cuadrado es" + cuad(5))
+
+# Error de ejecución ➡ Excepción 💥
+
+# def f(x, y):
+#     return x / y 
+
+# def g(x, y):
+#     return f(x, y)
+
+# z = g(5, 0) ➡ ZeroDivisionError
 
 # try:
 # # aquí ponemos el código que puede lanzar excepciones
@@ -31,8 +50,8 @@ def pedir_entero():
     while intentos < 5:
         valor = input("Ingrese un número entero: ")
         try:
-        return int(valor)
+            return int(valor)
         except ValueError:
-        print(f"{valor!r} no es un número entero.")
+            print(f"{valor!r} no es un número entero.")
         intentos += 1
         raise ValueError("Valor incorrecto ingresado en 5 intentos")

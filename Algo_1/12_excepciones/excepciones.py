@@ -18,6 +18,24 @@
 
 # z = g(5, 0) ➡ ZeroDivisionError
 
+# Propagación de excepciones
+
+def normalizar(x, y):
+    norma = (x**2 + y**2)**0.5
+    print("Antes")
+    xn = x / norma
+    yn = y / norma
+    print("Después")
+    return xn, yn 
+
+def main():
+    x = float(input("x: "))
+    y = float(input("y: "))
+    print(normalizar(x,y))
+    print("Listo")
+
+# main()
+
 # try:
 # # aquí ponemos el código que puede lanzar excepciones
 # except IOError:
@@ -54,4 +72,6 @@ def pedir_entero():
         except ValueError:
             print(f"{valor!r} no es un número entero.")
         intentos += 1
-        raise ValueError("Valor incorrecto ingresado en 5 intentos")
+    raise ValueError("Valor incorrecto ingresado en 5 intentos")
+
+# pedir_entero()

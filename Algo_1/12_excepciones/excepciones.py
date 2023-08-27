@@ -18,7 +18,7 @@
 
 # z = g(5, 0) ➡ ZeroDivisionError
 
-# Propagación de excepciones
+# Propagación de excepciones 💣
 
 def normalizar(x, y):
     norma = (x**2 + y**2)**0.5
@@ -29,12 +29,19 @@ def normalizar(x, y):
     return xn, yn 
 
 def main():
-    x = float(input("x: "))
-    y = float(input("y: "))
-    print(normalizar(x,y))
+    try:
+        x = float(input("x: "))
+        y = float(input("y: "))
+        print(normalizar(x,y))
+    except ZeroDivisionError:
+        print("No se puede normalizar al vector (0, 0)")
+    except ValueError as ex:
+        print(f"Asegúrese de ingresar números - {ex}")
+    except:
+        print("Ocurrió algo inesperado")
     print("Listo")
 
-# main()
+main()
 
 # try:
 # # aquí ponemos el código que puede lanzar excepciones

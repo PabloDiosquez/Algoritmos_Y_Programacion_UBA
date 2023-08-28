@@ -60,7 +60,7 @@ def sumar_uno_a_uno(lista1, lista2):
     """
     Describe la lista que resulta de sumar los elementos de las dos listas dadas uno a uno.
     Precondiciones:
-        - Las listas deben tener la misma cantidad de elementos.
+        - Las listas deben tener la misma cantidad de elementos y no deben ser vacías.
         - Los elementos de ambas listas deben ser 'sumables' entre sí. Deben soportar el operador +.
     """
     suma = []
@@ -70,6 +70,14 @@ def sumar_uno_a_uno(lista1, lista2):
 
 def multiplicar_por_número(lista: list, número):
     """
+    Multiplica cada elemento de una lista por un número dado.
+
+    Parámetros:
+    - lista (list): La lista de elementos a multiplicar.
+    - numero: El número por el cual se multiplicarán los elementos de la lista.
+
+    Retorna:
+    - lista_multiplicada (list): Una nueva lista con los elementos multiplicados.
     """
     lista_multiplicada = []
     for elemento in lista:

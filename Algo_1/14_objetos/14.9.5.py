@@ -10,7 +10,7 @@ from helpers import sumar_uno_a_uno, validar_lista_de_números, multiplicar_por_
 
 class Vector:
     """
-    Representa un vector de números.
+    Representa un vector de Rn.
     """
 
     def __init__(self, elementos: list) -> None:
@@ -20,6 +20,7 @@ class Vector:
 
     def __str__(self) -> str:
         """
+        Conversión a cadena de texto.
         """
         return self.coordenadas.__str__()
     
@@ -31,6 +32,7 @@ class Vector:
     
     def __add__(self, otro_vector):
         """
+        Recibe otro vector, verifica si tienen la misma cantidad de elementos y describe un nuevo vector con la suma de ambos. Si no tienen la misma cantidad de elementos debe levanta ValueError.
         """
         if not self.dimensión == otro_vector.dimensión:
             raise ValueError("Los vectores deben tener la misma cantidad de elementos")
@@ -38,5 +40,6 @@ class Vector:
 
     def __mul__(self, número):
         """
+        Recibe un número y describe un nuevo vector, con los elementos multiplicados por ese número.
         """
         return Vector(multiplicar_por_número(self.coordenadas, número))

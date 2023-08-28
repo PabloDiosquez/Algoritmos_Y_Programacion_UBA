@@ -13,7 +13,17 @@ def validar_número_positivo(valor):
     if not isinstance(valor, (int, float)):
         raise TypeError(f"{valor!r} no es un valor numérico")
     if not valor > 0:
-        raise ValueError("El número debe ser mayor que 0")
+        raise ValueError("El número debe ser mayor a 0")
+    return valor
+
+def validar_número_entero_positivo(valor):
+    """
+    Si el valor es un número entero y positivo lo devuelve. En caso contrario lanza una excepción.
+    """
+    if not isinstance(valor, int):
+        raise TypeError(f"{valor!r} no es un número entero")
+    if not valor > 0:
+        raise ValueError("El número debe ser mayor a 0")
     return valor 
 
 def validar_cadena_no_vacía(cadena):

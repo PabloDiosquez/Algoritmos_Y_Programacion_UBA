@@ -3,8 +3,9 @@
 # Los objetos tienen estado y comportamiento, ya que los valores que tengan los atributos
 # de una instancia determinan el estado actual de esa instancia, y los métodos definidos en una clase
 # determinan cómo se va a comportar ese objeto.
-from helpers import validar_número
+from helpers import validar_número, validar_cadena_no_vacía
 
+# -----------------------------
 class Punto:
     """
     Representación de un punto en el plano en
@@ -40,12 +41,82 @@ class Punto:
         Describe la norma del vector que va desde el origen hasta el punto.
         """
         return pow(pow(self.x, 2) + pow(self.y, 2), 0.5)
+    
+    # Métodos especiales 🪓
+    # Así como el constructor, __init__, existen diversos métodos especiales que, si están definidos en nuestra clase, Python los llamará por nosotros cuando se utilice una instancia en situaciones particulares.
 
-# Ejemplos
+    def __str__(self) -> str:
+        """
+        Describe la representanción del punto como cadena de texto.
+        """
+        return f"{(self.x, self.y)}"
+    
+    def __repr__(self) -> str:
+        """
+        Devuelve la representación formal del Punto como
+        cadena de texto.
+        """
+        return f"Punto: {(self.x, self.y)}"
+    
+    def __add__(self, otro_punto):
+        """
+        Describe el punto que resulta de sumar los dos puntos.
+        """
+        return Punto(self.x + otro_punto.x, self.y + otro_punto.y)
+    
+    def __sub__(self, otro_punto):
+        """
+        Describe el punto que resulta de restar los dos puntos.
+        """
+        return Punto(self.x - otro_punto.x, self.y - otro_punto.y)
+    
+    def desplazar(self, dx, dy):
+        """
+        Desplaza el punto según 'dx' y 'dy'.
+        """
+        self.x += dx
+        self.y += dy
 
-o = Punto(0, 0)
-print(f"x: {o.x}")
-print(f"y: {o.y}")
+# -----------------------------
+class Rectángulo:
+    """
+    Representación de un rectángulo en el plano cartesiano de lados paralelos a los ejes cartesianos.
+    """
 
-p = Punto(1,2)
-print(p.distancia(o))
+    def __init__(self, noroeste: Punto, sudeste: Punto):
+        """
+        Crea un Rectangulo a partir de los puntos correspondientes a las
+        esquinas superior izquierda e inferior derecha.
+        """
+        self.noroeste = noroeste
+        self.sudeste  = sudeste
+
+# -----------------------------
+class Hotel:
+    """
+    Representa un hotel: sus atributos son:
+    nombre, ubicacion, puntaje y precio.
+    """
+
+    def __init__(self, nombre, ubicación, puntaje, precio):
+        """
+        Crea un Hotel.
+        nombre y ubicación deben ser cadenas no vacías;
+        puntaje y precio son números.
+        """
+        self.nombre    = validar_cadena_no_vacía(nombre)
+        self.ubicación = validar_cadena_no_vacía(ubicación)
+        self.puntaje   = validar_número(puntaje)
+        self.precio    = validar_número(precio)
+    
+    def __str__(self) -> str:
+        """
+        Conversión a cadena de texto.
+        """
+        return f"Hotel {self.nombre} de {self.ubicación} -- Puntaje: {self.puntaje} -- Precio: {self.precio}"
+    
+    def ratio(self):
+        """
+        Describe la relación calidad-precio de un hotel.
+        """
+        return 10*(pow(self.puntaje, 2))/(self.precio)

@@ -1,3 +1,4 @@
+# ----------- Funciones sobre números ----------- 
 def validar_número(valor):
     """
     Si el valor es numérico lo devuelve. En caso contrario lanza TypeError.
@@ -26,6 +27,8 @@ def validar_número_entero_positivo(valor):
         raise ValueError("El número debe ser mayor a 0")
     return valor 
 
+# ----------- Funciones sobre cadenas -----------
+
 def validar_cadena_no_vacía(cadena):
     """
     Si la cadena no es vacía la devuelve. En caso contrario lanza ValueError.
@@ -39,3 +42,36 @@ def es_vacía(cadena: str):
     Indica si la cadena de caracteres dada es vacía.
     """
     return not len(cadena)
+
+# ----------- Funciones sobre listas -----------
+def validar_lista_de_números(lista: list):
+    """
+    Si la lista es de números, la devuelve. En caso contrario, lanza TypeError.
+    Además, valida que la lista no sea vacía.
+    """
+    if es_vacía(lista):
+        raise ValueError("La lista no debe ser vacía")
+    for elemento in lista:
+        if not isinstance(elemento, (int, float, complex)):
+            raise TypeError(f"{elemento!r} no es un valor numérico")
+    return lista 
+
+def sumar_uno_a_uno(lista1, lista2):
+    """
+    Describe la lista que resulta de sumar los elementos de las dos listas dadas uno a uno.
+    Precondiciones:
+        - Las listas deben tener la misma cantidad de elementos.
+        - Los elementos de ambas listas deben ser 'sumables' entre sí. Deben soportar el operador +.
+    """
+    suma = []
+    for index in range(len(lista1)):
+        suma.append(lista1[index] + lista2[index])
+    return suma 
+
+def multiplicar_por_número(lista: list, número):
+    """
+    """
+    lista_multiplicada = []
+    for elemento in lista:
+        lista_multiplicada.append(elemento*número)
+    return lista_multiplicada

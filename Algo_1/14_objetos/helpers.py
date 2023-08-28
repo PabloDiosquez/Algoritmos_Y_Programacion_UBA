@@ -27,6 +27,16 @@ def validar_número_entero_positivo(valor):
         raise ValueError("El número debe ser mayor a 0")
     return valor 
 
+def validar_número_distinto_de_cero(valor):
+    """
+    Si el valor es un número entero distinto de 0 lo devuelve. En caso contrario lanza ZeroDivisionError.
+    """
+    if not isinstance(valor, int):
+        raise TypeError(f"{valor!r} no es un número entero")
+    if not valor == 0:
+        raise ZeroDivisionError("El número debe ser distinto de 0")
+    return valor
+
 # ----------- Funciones sobre cadenas -----------
 
 def validar_cadena_no_vacía(cadena):

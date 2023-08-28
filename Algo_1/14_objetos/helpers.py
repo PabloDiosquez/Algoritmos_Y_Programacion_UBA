@@ -1,4 +1,5 @@
-# ----------- Funciones sobre números ----------- 
+# ----------- Funciones sobre números -----------
+ 
 def validar_número(valor):
     """
     Si el valor es numérico lo devuelve. En caso contrario lanza TypeError.
@@ -54,6 +55,7 @@ def es_vacía(cadena: str):
     return not len(cadena)
 
 # ----------- Funciones sobre listas -----------
+
 def validar_lista_de_números(lista: list):
     """
     Si la lista es de números, la devuelve. En caso contrario, lanza TypeError.
@@ -93,3 +95,29 @@ def multiplicar_por_número(lista: list, número):
     for elemento in lista:
         lista_multiplicada.append(elemento*número)
     return lista_multiplicada
+
+# ----------- Funciones sobre diccionarios -----------
+
+def agregar_par_clave_valor(diccionario: dict, par: dict):
+    """
+    """
+    pass 
+
+def validar_denominaciones(denominaciones: dict):
+    """
+    """
+    DENOMINACIONES_VÁLIDAS = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+
+    for denominación in denominaciones:
+        if denominación not in DENOMINACIONES_VÁLIDAS:
+            raise ValueError(f"Denominación {denominación!r} no válida")
+    return denominaciones
+
+def sumar_denominaciones(denominaciones: dict):
+    """
+    """
+    total = 0
+    for denominación in denominaciones:
+        cantidad = denominaciones[denominación]
+        total += cantidad*denominación
+    return total 

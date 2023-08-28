@@ -113,5 +113,3 @@ def pedir_número():
             return float(número)
         except ValueError:
             continue 
-
-# pedir_número()

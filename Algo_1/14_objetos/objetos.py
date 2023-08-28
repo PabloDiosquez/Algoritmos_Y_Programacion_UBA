@@ -70,6 +70,12 @@ class Punto:
         """
         return Punto(self.x - otro_punto.x, self.y - otro_punto.y)
     
+    def __eq__(self, otro_punto: object) -> bool:
+        """
+        Indica si dos puntos son iguales.
+        """
+        return self.x == otro_punto.x and self.y == otro_punto.y
+    
     def desplazar(self, dx, dy):
         """
         Desplaza el punto según 'dx' y 'dy'.
@@ -113,10 +119,39 @@ class Hotel:
         """
         Conversión a cadena de texto.
         """
-        return f"Hotel {self.nombre} de {self.ubicación} -- Puntaje: {self.puntaje} -- Precio: {self.precio}"
+        return f"{self.nombre} de {self.ubicación} -- Puntaje: {self.puntaje} -- Precio: ${self.precio}"
     
     def ratio(self):
         """
         Describe la relación calidad-precio de un hotel.
         """
         return 10*(pow(self.puntaje, 2))/(self.precio)
+    
+    def __lt__(self, otro_hotel):
+        """
+        Indica si el hotel que recibe el mensaje tiene menor ratio que el hotel dado.
+        """
+        return self.ratio() < otro_hotel.ratio()
+    
+    def precio(self):
+        """
+        Describe el precio de un hotel.
+        """
+        return self.precio
+    
+# Una pequeña prueba...
+
+hotel1 = Hotel("Hotel 1* normal", "MDQ", 1, 10)
+hotel2 = Hotel("Hotel 2* normal", "MDQ", 2, 40)
+hotel3 = Hotel("Hotel 3* carisimo", "MDQ", 3, 130)
+hotel4 = Hotel("Hotel vale la pena" ,"MDQ", 4, 130)
+hoteles = [hotel1, hotel2, hotel3, hotel4]
+
+hoteles.sort()
+for hotel in hoteles:
+    print(hotel)
+
+print()
+hoteles.sort(key=Hotel.precio)
+for hotel in hoteles:
+    print(hotel)

@@ -23,20 +23,26 @@ from helpers import validar_denominaciones, sumar_denominaciones, agregar_par_cl
 
 class Caja:
     """
+    Representa cuánto dinero hay en una caja de un negocio.
     """
 
     def __init__(self, denominaciones: dict):
         """
+        Crea una instancia de la clase Caja usando las denominaciones dadas.
+        Precondiciones:
+            - Las denominaciones permitidas son 1, 2, 5, 10, 20, 50, 100, 200, 500 y 1000 pesos.
         """
         self.denominaciones = validar_denominaciones(denominaciones)
 
     def __str__(self) -> str:
         """
+        Describe el total de dinero de una caja.
         """
         return f"Caja {self.denominaciones} -- Total: {sumar_denominaciones(self.denominaciones)}"
     
     def agregar(self, denominación: dict):
         """
+        Agrega a una caja el número de billetes de la denominación dada. Lanza ValueError si la denominación es incorrecta.
         """
         return Caja(agregar_par_clave_valor(self.denominaciones, validar_denominaciones(denominación)))
     

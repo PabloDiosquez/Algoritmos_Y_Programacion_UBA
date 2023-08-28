@@ -72,7 +72,7 @@ def sumar_uno_a_uno(lista1, lista2):
     """
     Describe la lista que resulta de sumar los elementos de las dos listas dadas uno a uno.
     Precondiciones:
-        - Las listas deben tener la misma cantidad de elementos y no deben ser vacías.
+        - Las listas deben tener la misma nro_de_billetes de elementos y no deben ser vacías.
         - Los elementos de ambas listas deben ser 'sumables' entre sí. Deben soportar el operador +.
     """
     suma = []
@@ -98,10 +98,25 @@ def multiplicar_por_número(lista: list, número):
 
 # ----------- Funciones sobre diccionarios -----------
 
-def agregar_par_clave_valor(diccionario: dict, par: dict):
+def agregar_par_clave_valor(dicc_viejo: dict, dicc_nuevo: dict):
     """
+    Agrega los pares clave-valor del diccionario nuevo al diccionario viejo.
+
+    Parámetros:
+    - dicc_viejo (dict): El diccionario viejo al que se agregarán los pares clave-valor.
+    - dicc_nuevo (dict): El diccionario nuevo que contiene los pares clave-valor a agregar.
+
+    Retorna:
+    - dict: El diccionario viejo con los pares clave-valor adicionales.
     """
-    pass 
+    for clave in dicc_nuevo.keys():
+        if clave in dicc_viejo:
+            dicc_viejo[clave] += dicc_nuevo[clave]
+        else: 
+            dicc_viejo[clave] = dicc_nuevo[clave]
+    return dicc_viejo
+
+# Funciones específicas para el ejercicio 14.9.6 ➡ Clase Caja 
 
 def validar_denominaciones(denominaciones: dict):
     """
@@ -118,6 +133,6 @@ def sumar_denominaciones(denominaciones: dict):
     """
     total = 0
     for denominación in denominaciones:
-        cantidad = denominaciones[denominación]
-        total += cantidad*denominación
+        nro_de_billetes = denominaciones[denominación]
+        total += nro_de_billetes*denominación
     return total 

@@ -128,6 +128,14 @@ def validar_denominaciones(denominaciones: dict):
             raise ValueError(f"Denominación {denominación!r} no válida")
     return denominaciones
 
+def validar_denominaciones_específicas(denominaciones_en_caja, denominaciones_a_validar):
+    """
+    """
+    for denominación in denominaciones_a_validar:
+        if denominación not in denominaciones_en_caja:
+            raise ValueError(f"No hay billetes de denominación {denominación} en la caja")
+    return denominaciones_a_validar
+
 def sumar_denominaciones(denominaciones: dict):
     """
     """

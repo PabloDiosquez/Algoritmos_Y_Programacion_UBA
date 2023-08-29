@@ -19,7 +19,7 @@
 # >>> str(c)
 # 'Caja {500: 6, 100: 6, 2: 5} total: 3610 pesos'
 
-from helpers import validar_denominaciones, sumar_denominaciones, agregar_par_clave_valor
+from helpers import validar_denominaciones, sumar_denominaciones, agregar_par_clave_valor, validar_denominaciones_específicas
 
 class Caja:
     """
@@ -36,7 +36,7 @@ class Caja:
 
     def __str__(self) -> str:
         """
-        Describe el total de dinero de una caja.
+        Describe el dniero total de una caja.
         """
         return f"Caja {self.denominaciones} -- Total: {sumar_denominaciones(self.denominaciones)}"
     
@@ -46,6 +46,19 @@ class Caja:
         """
         return Caja(agregar_par_clave_valor(self.denominaciones, validar_denominaciones(denominación)))
     
+    def quitar(self, denominaciones: dict):
+        """
+        Describe el dinero total de una caja luego quitar las cantidades de cada denominación dada. En caso de no existir determinada denominación o de no haber suficiente dinero lanza ValueError.
+        """
+        denominaciones = validar_denominaciones_específicas(self.denominaciones, denominaciones)
+        for denominación in denominaciones.keys():
+            if self.denominaciones[denominación] < denominaciones[denominación]:
+                raise ValueError(f"No hay suficientes billetes de denominación {denominación}")
+            self.denominaciones[denominación] -= denominaciones[denominación]
+        return sumar_denominaciones(self.denominaciones)
+    
 # c = Caja({500: 6, 300: 7, 2: 4})
-# c = Caja({500: 6, 100: 7, 2: 4})
+# c = Caja({100: 7, 2: 4, 50: 3})
+# print(c)
+# print(c.quitar({50: 2, 100: 1}))
 # print(c)

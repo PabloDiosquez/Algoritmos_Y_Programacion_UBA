@@ -43,7 +43,15 @@ class Carrera:
         """
         """
         self.materias = materias
-    
+
+    def aprobar(self, código: str, promedio: float):
+        """
+        """
+        for materia in self.materias:
+            if materia.código == código:
+                materia.estado   = 1
+                materia.promedio = promedio
+        
     def __créditos(self):
         """
         Describe el total de créditos adquiridos de las materias aprobadas en una carrera.
@@ -71,7 +79,7 @@ class Carrera:
         if es_vacía(self.materias): raise ValueError("Lista de materias vacía")
         aprobadas = []
         for materia in self.materias:
-            if not materia.estado: aprobadas.append(materia)
+            if materia.estado != 0: aprobadas.append(materia)
         if es_vacía(aprobadas): raise ValueError("Aún no hay materias aprobadas")
         return aprobadas
 
@@ -79,7 +87,7 @@ class Carrera:
         """
         Describe una cadena de caracteres con la información de una carrera.
         """
-        return f"Créditos: {self.__créditos()} -- Promedio: {self.__promedio()} -- Materias aprobadas: {self.__materias_aprobadas()}"
+        return f"Créditos: {self.__créditos()} -- Promedio: {self.__promedio()} -- Materias aprobadas: {[str(materia) for materia in self.__materias_aprobadas()]}"
 
 
 
@@ -87,3 +95,15 @@ def main():
     analisis2 = Materia("61.03", "Análisis 2", 8)
     fisica2   = Materia("62.01", "Física 2", 8)
     algo1     = Materia("75.40", "Algoritmos 1", 6)
+
+    c = Carrera([analisis2, fisica2, algo1])
+    # print(c)
+# Créditos: 0 -- Promedio: N/A -- Materias aprobadas:
+    # c.aprobar("95.14", 7)
+# ValueError: La materia 75.14 no es parte del plan de estudios
+    c.aprobar("75.40", 10)
+    c.aprobar("62.01", 7)
+    print(c)
+    
+
+main()

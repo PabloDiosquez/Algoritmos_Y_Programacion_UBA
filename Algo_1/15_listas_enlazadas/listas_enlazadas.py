@@ -49,7 +49,7 @@ class _Nodo:
 
 
 # ------ Main 🙉 ------
-def main():
+def __init__():
     # n1 = _Nodo('a', None)
     # print(n1)
     # n2 = _Nodo('b', None)
@@ -65,4 +65,4 @@ def main():
     print(str(L))
 
 
-main()
+__init__()

@@ -6,19 +6,32 @@
 # ver_tope(P)   ➡ x    O(1)
 # está_vacía(P) ➡ bool O(1)
 
+
+
+# Implementación con nodos 
+
 class Pila:
 
     def __init__(self):
-        self.apilados = []
+        self.tope = None 
 
-    def apilar(self, x):
-        self.apilados.append(x)
+    def apilar(self, dato):
+        # nuevo_tope = Nodo(dato, self.tope)
+        # self.tope  = nuevo_tope
+        self.tope = Nodo(dato, self.tope)
 
     def desapilar(self):
-        return self.apilados.pop()
+        pass 
     
     def ver_tope(self):
-        return self.apilados[len(self.apilados)-1] 
+        pass  
 
     def está_vacía(self):
-        return not len(self.apilados)
+        pass 
+    
+
+class Nodo:
+
+    def __init__(self, dato, prox):
+        self.dato = dato 
+        self.prox = prox

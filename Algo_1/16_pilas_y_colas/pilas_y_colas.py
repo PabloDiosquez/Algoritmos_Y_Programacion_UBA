@@ -6,31 +6,49 @@
 # ver_tope(P)   ➡ x    O(1)
 # está_vacía(P) ➡ bool O(1)
 
+# Implementación con _nodos 
 
-
-# Implementación con nodos 
-
+# ------ Pila ------
 class Pila:
 
     def __init__(self):
         self.tope = None 
 
     def apilar(self, dato):
-        # nuevo_tope = Nodo(dato, self.tope)
+        # nuevo_tope = _Nodo(dato, self.tope)
         # self.tope  = nuevo_tope
-        self.tope = Nodo(dato, self.tope)
+        self.tope = _Nodo(dato, self.tope)
 
     def desapilar(self):
-        pass 
+        """
+        Elimina el tope de la pila y lo describe.
+        Pre:
+            - La pila no debe estar vacía.
+        """
+        if self.tope is None:
+            raise ValueError("Pila vacía")
+        viejo_tope = self.tope.dato
+        self.tope  = self.tope.prox
+        return viejo_tope  
     
     def ver_tope(self):
-        pass  
+        """
+        Describe el tope de la lista.
+        Pre:
+            - La pila no debe estar vacía.
+        """
+        if self.tope is None:
+            raise ValueError("Pila vacía")
+        return self.tope.dato  
 
     def está_vacía(self):
-        pass 
+        """
+        Indica si la pila está vacía.
+        """
+        return self.tope is None  
     
-
-class Nodo:
+# ------ Nodo ------
+class _Nodo:
 
     def __init__(self, dato, prox):
         self.dato = dato 

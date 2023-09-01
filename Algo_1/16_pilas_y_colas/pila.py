@@ -53,3 +53,19 @@ class _Nodo:
     def __init__(self, dato, prox):
         self.dato = dato 
         self.prox = prox
+
+def main():
+    p = Pila()
+    p.apilar('x')
+    p.apilar('z')
+    p.apilar('a')
+    
+    print(p.ver_tope())
+    p.desapilar()
+    print(p.ver_tope())
+    p.desapilar()
+    print(p.ver_tope())
+    p.desapilar()
+    print(p.está_vacía())
+    
+main()

@@ -15,7 +15,7 @@ class Cola:
         self.ultimo = None 
 
     def encolar(self, dato):
-        nuevo            = _Nodo(dato, self.ultimo)
+        nuevo            = _Nodo(dato, None)
         if self.ultimo is None:
             # cola vacía
             self.frente = nuevo
@@ -34,7 +34,6 @@ class Cola:
         viejo_frente = self.frente.dato
         self.frente  = self.frente.prox
         if self.frente is None:
-            # invariante
             self.ultimo = None
         return viejo_frente  
 
@@ -54,3 +53,16 @@ class _Nodo:
     def __init__(self, dato, prox):
         self.dato = dato 
         self.prox = prox 
+
+def main():
+    c = Cola()
+    c.encolar('🌳')
+    c.encolar('🚀')
+    c.encolar('🐀')
+    print(c.ver_frente())
+    c.desencolar()
+    c.desencolar()
+    c.desencolar()
+    print(c.está_vacía())
+
+main()

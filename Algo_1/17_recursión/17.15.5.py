@@ -6,12 +6,18 @@
 
 def par(n: int):
     """
+    Indica si el número dado es par.
+    Pre:
+        - El número dado debe ser >= 0.
     """
     if n == 1: return False
     return impar(n-1)
 
 def impar(n: int):
     """
+    Indica si el número dado es impar.
+    Pre:
+        - El número dado debe ser >= 0.
     """
     if n == 1: return True 
     return par(n-1)

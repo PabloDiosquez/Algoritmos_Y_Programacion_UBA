@@ -2,28 +2,54 @@
 
 # crear_vacía()    ➡ C     O(1)
 # encolar(C, x)             O(1)
-# desencolar(C) ➡ x     O(1)
+# desencolar(C) ➡ x        O(1)
 # ver_frente(C)    ➡ x     O(1)
 # está_vacía(C)    ➡ bool  O(1)
 
+# Implementación con nodos 
+
+# ----- Clase Cola ------
 class Cola:
     def __init__(self):
         self.frente = None
         self.ultimo = None 
 
     def encolar(self, dato):
-        pass 
+        nuevo            = _Nodo(dato, self.ultimo)
+        if self.ultimo is None:
+            # cola vacía
+            self.frente = nuevo
+        else:
+            self.ultimo.prox = nuevo
+        self.ultimo      = nuevo
     
     def desencolar(self):
-        pass 
+        """
+        Desencola el primer elemento y lo describe.
+        Invariante de la clase:
+            - 'frente' y 'ultimo' o bien ambos son None o bien los dos son un nodo
+        Precondición:
+            - La cola no puede ser vacía.
+        """ 
+        viejo_frente = self.frente.dato
+        self.frente  = self.frente.prox
+        if self.frente is None:
+            # invariante
+            self.ultimo = None
+        return viejo_frente  
 
     def ver_frente(self):
-        pass 
+        """
+        Indica si la cola está vacía.
+        Invariante de la clase:
+            - 'frente' y 'ultimo' o bien ambos son None o bien los dos son un nodo
+        """
+        return self.frente.dato 
 
     def está_vacía(self):
-        pass 
+        return self.frente is None  
         
-
+# ----- Clase Nodo privada ------
 class _Nodo:
     def __init__(self, dato, prox):
         self.dato = dato 

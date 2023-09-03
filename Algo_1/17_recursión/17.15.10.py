@@ -1,14 +1,22 @@
 # Escribir una funcion recursiva que dada una cadena determine si en la misma
 # hay más letras A o letras E.
 
+# Una primer idea... 🤔
     
 def mayor_cantidad_de__o_de__(cadena: str, letra1: str, letra2: str):
     """
+    Dada una cadena determina si hay más letras 'letra1' o letras 'letra2'
+    Pre:
+        - La cadena dada no puede ser vacía.
     """
     return mayor_cantidad_de__o_de__hasta(cadena, letra1, 0, letra2, 0, len(cadena))
 
 def mayor_cantidad_de__o_de__hasta(cadena: str, letra1: str, contador1: int, letra2: str, contador2: int, hasta: int):
     """
+    Dada una cadena determina si hay más letras 'letra1' o letras 'letra2' hasta el índice 'hasta'.
+    Pre:
+        - La cadena dada no puede ser vacía.
+        - Debe ser 0 <= 'hasta' <= len(cadena)
     """
     if hasta == 0:
         if max(contador1, contador2) == contador1:
@@ -23,13 +31,15 @@ def mayor_cantidad_de__o_de__hasta(cadena: str, letra1: str, contador1: int, let
     elif letra_actual == letra2: return mayor_cantidad_de__o_de__hasta(cadena, letra1, contador1, letra2, contador2 + 1, hasta-1)
     return mayor_cantidad_de__o_de__hasta(cadena, letra1, contador1, letra2, contador2, hasta-1) 
 
-# Otra posible solución 🐱‍🏍
+# Otra posible idea... 🐱‍🏍
 # 
 # from helpers import es_vacía
 
 # def mayor_cantidad_de__o_de__(cadena: str, letra1: str, letra2: str):
 #     """
-#     """
+    # Dada una cadena determina si hay más letras 'letra1' o letras 'letra2'
+    # Pre:
+    #     - La cadena dada no puede ser vacía.
 #     if _mayor_cantidad_de__o_de__(cadena, letra1, letra2, 0) > 0:
 #         return letra1
 #     return letra2 

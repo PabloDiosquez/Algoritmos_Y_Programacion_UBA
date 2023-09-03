@@ -13,14 +13,21 @@ def máximo(lista: list):
 
 def máximo(lista: list):
     """
+    Describe el mayor elemento de la lista dada.
+    Pre:
+        - La lista dada no debe ser vacía.
     """
-    return _máximo(lista, len(lista))
+    return máximo_hasta(lista, len(lista))
 
-def _máximo(lista: list, n: int):
+def máximo_hasta(lista: list, hasta: int):
     """
+    Describe el mayor elemento de la lista dada hasta el índice 'hasta' - 1.
+    Pre:
+        - La lista dada no debe ser vacía.
+        - Debe ser 0 <= 'hasta' <= len(lista) 
     """
-    if n == 1: return lista[0]
-    return máximo_entre(lista[n-1], _máximo(lista, n-1))
+    if hasta == 1: return lista[0]
+    return máximo_entre(lista[hasta-1], máximo_hasta(lista, hasta-1))
 
 
 # Funciones auxiliares 🐱‍🏍 

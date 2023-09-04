@@ -9,3 +9,9 @@ def lista_vacía():
     Describe una lista vacía.
     """
     return [] 
+
+def es_par(n: int):
+    """
+    Indica si el número dado es par.
+    """
+    return not n % 2 

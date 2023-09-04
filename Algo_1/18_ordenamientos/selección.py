@@ -1,8 +1,8 @@
 # Ordenamiento por Selección 🐀
 
-def selección(L):
+def ordenar_selección(L):
     """
-    Ordena los elementos de la lista dada.
+    Ordena los elementos de la lista que recibe.
     Invariantes:
         - La sublista L[0], ..., L[i] está ordenada.
         - Todos los elementos L[i+1], L[N-1] son mayores.
@@ -28,12 +28,12 @@ def buscar_índice_del_mínimo(L, desde, hasta):
 
 L = ['e', 'r', 'a', 'g', 'h', 'j', 'z', 'v']
 print("Antes: ", L)
-selección(L)
+ordenar_selección(L)
 print("Despúes: ", L)
 
 # Anexo 🖖🏼
 
-# El algoritmo de ordenamiento por selección es un algoritmo simple pero ineficiente para ordenar una lista o arreglo de elementos. Funciona seleccionando repetidamente el elemento más pequeño (o más grande, dependiendo de si se desea ordenar de forma ascendente o descendente) de la lista y moviéndolo a la posición adecuada. Aquí tienes una descripción detallada del algoritmo junto con ejemplos en Python:
+# El algoritmo de ordenamiento por ordenar_selección es un algoritmo simple pero ineficiente para ordenar una lista o arreglo de elementos. Funciona seleccionando repetidamente el elemento más pequeño (o más grande, dependiendo de si se desea ordenar de forma ascendente o descendente) de la lista y moviéndolo a la posición adecuada. Aquí tienes una descripción detallada del algoritmo junto con ejemplos en Python:
 
 # Pseudocódigo:
 # Para i desde 0 hasta n-1:
@@ -59,7 +59,7 @@ def ordenamiento_por_seleccion(arr):
 # Ejemplo de uso:
 arr = [64, 25, 12, 22, 11]
 ordenamiento_por_seleccion(arr)
-print("Arreglo ordenado por selección:", arr)
+print("Arreglo ordenado por ordenar_selección:", arr)
 # Explicación paso a paso:
 
 # Comenzamos con un arreglo desordenado, por ejemplo, [64, 25, 12, 22, 11].
@@ -74,4 +74,4 @@ print("Arreglo ordenado por selección:", arr)
 
 # Al final, obtenemos el arreglo ordenado [11, 12, 22, 25, 64].
 
-# Es importante destacar que el ordenamiento por selección tiene un rendimiento de tiempo cuadrático (O(n^2)), lo que lo hace ineficiente para listas grandes, pero es fácil de implementar y entender. Por lo tanto, se utiliza principalmente en situaciones donde la simplicidad de implementación es más importante que la eficiencia.
+# Es importante destacar que el ordenamiento por ordenar_selección tiene un rendimiento de tiempo cuadrático (O(n^2)), lo que lo hace ineficiente para listas grandes, pero es fácil de implementar y entender. Por lo tanto, se utiliza principalmente en situaciones donde la simplicidad de implementación es más importante que la eficiencia.

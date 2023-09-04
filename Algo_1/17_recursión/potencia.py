@@ -7,8 +7,11 @@ def potencia(b: float, n: int):
         - El algoritmo utiliza la bien conocida propiedad: b^n = [b^(n/2)]^2
     """
     if n == 0: return 1
-    restante = 1  
+    restante = 1 
+    pot = potencia(b, n // 2) 
     if not es_par(n):
         restante = b 
      
-    return potencia(b, n // 2)*potencia(b, n// 2)*restante
+    return pot*pot*restante
+
+print(potencia(3,11))

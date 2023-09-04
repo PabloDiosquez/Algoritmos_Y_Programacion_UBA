@@ -1,5 +1,6 @@
 from helpers import es_par
 
+# Exponenciación binaria 🚀         T(n) ➡ O(log n) || E(n) ➡ O(log n)
 def potencia(b: float, n: int):
     """
     Describe 'b' elevado a la 'n'.

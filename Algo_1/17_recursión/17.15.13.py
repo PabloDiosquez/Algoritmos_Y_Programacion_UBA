@@ -6,4 +6,27 @@
 def combinaciones(lista: list, longitud: int):
     """
     """
-    pass 
+    if longitud == 1: return lista
+    return _agregar_adelante_todos(combinaciones(lista, longitud-1),lista)
+    
+
+def _agregar_adelante_todos(lista, lista_aux):
+    """
+    """
+    if not len(lista_aux): return []
+    primer_elemento = lista_aux[0]
+    resto = lista_aux[1:]
+    return _agregar_adelante(lista, primer_elemento) + _agregar_adelante_todos(lista, resto)
+
+
+def _agregar_adelante(lista: list[str], c: str):
+    """
+    """
+    if not len(lista): return []
+    primer_elemento = lista[0]
+    resto           = lista[1:]
+    nuevo = c + primer_elemento
+    return [nuevo] + _agregar_adelante(resto, c)
+
+L = ['a','b','c']
+print(combinaciones(L,3))

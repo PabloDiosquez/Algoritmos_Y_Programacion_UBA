@@ -14,10 +14,8 @@ def mergesort(L):
 def merge(L1, L2):
     """
     Intercala los elementos de las dos listas de forma ordenada.
-
     Pre:
     - Las listas dadas (L1 y L2) deben estar ordenadas de manera ascendente.
-
     Post:
     - Devuelve una nueva lista (R) que contiene todos los elementos de L1 y L2,
       manteniendo el orden ascendente.

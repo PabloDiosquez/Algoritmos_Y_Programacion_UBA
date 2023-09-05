@@ -30,3 +30,18 @@ def _agregar_adelante(lista: list[str], c: str):
 
 L = ['a','b','c']
 print(combinaciones(L,3))
+
+# Otra solución posible...🐕‍🦺
+def combinaciones(chars, k, prefijo=""):
+    if k == 0:
+        print(prefijo)
+        return
+    for char in chars:
+        combinaciones(chars, k - 1, prefijo + char)
+
+# Ejemplo de uso
+caracteres = ['a', 'b', 'c']
+k = 2
+combinaciones(caracteres, k)
+
+# Esta función combinaciones toma tres argumentos: chars es la lista de caracteres únicos, k es la longitud de las cadenas que deseas generar, y prefijo es un argumento auxiliar que acumula los caracteres a medida que se generan las combinaciones. La función se llama recursivamente reduciendo k en 1 en cada paso hasta que k sea igual a 0, momento en el que se imprime el prefijo actual. Esto genera todas las combinaciones posibles de longitud k con los caracteres dados.

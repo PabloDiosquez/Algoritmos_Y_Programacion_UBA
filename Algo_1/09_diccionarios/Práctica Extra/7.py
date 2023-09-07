@@ -1,6 +1,7 @@
 # 7.
-maratonistas = {
-    'Maratonista1': {
+# a.
+maratonistas = [
+    {
         'Nombre': 'Lio Messi',
         'DNI': 12345678,
         'Maratones': [
@@ -24,7 +25,7 @@ maratonistas = {
             }
         ]
     },
-    'Maratonista2': {
+    {
         'Nombre': 'Dibu Martínez',
         'DNI': 87654321,
         'Maratones': [
@@ -42,29 +43,50 @@ maratonistas = {
             }
         ]
     }
-}
+]
+
+# b.
 
 def nombre_maratonista(maratonista):
     """
     Obtiene el nombre del maratonista a partir de su información.
     Parámetros:
-        maratonista (dict): Un diccionario que representa al maratonista, debe contener la clave 'Nombre'.
+        - maratonista (dict): Un diccionario que representa al maratonista. 
+    Precondición:
+        - El diccionario debe contener la clave 'Nombre'.
     Retorna:
-        str: El nombre completo del maratonista.
-    Observación:
-        KeyError: Si el diccionario 'maratonista' no contiene la clave 'Nombre'.
+        - El nombre completo del maratonista (str).
     """
     return maratonista['Nombre']
 
-# print(sorted(maratonistas.items(), key=lambda x: nombre_maratonista(x[1])))
+def ordenar_maratonistas(maratonistas):
+    """
+    Describe una nueva lista de maratonistas ordenada alfabéticamente por sus nombres.
+    Parámetros:
+        - maratonistas (list[dict]): La lista de maratonistas a partir de la cual se creará la nueva lista ordenada.
+    Retorna:
+        - Una lista de maratonistas ordenada según los nombres de los mismos.
+    Observación:
+        - Si la lista de maratonistas dada está vacía, lanza ValueError.  
+    """
+    if not maratonistas: raise ValueError('La lista de maratonistas está vacía')
+    maratonistas_ordenados = []
+    for maratonista in sorted(maratonistas, key=lambda maratonista: nombre_maratonista(maratonista)):
+        maratonistas_ordenados.append(maratonista)
+    return maratonistas_ordenados
 
-for maratonista in maratonistas:
-    print(maratonistas[maratonista]['Nombre'])
-
-print(sorted(maratonistas, key=lambda x: nombre_maratonista(maratonistas[x]))) # Lista de claves ordenadas alfabéticamente por nombre
-
-ordenados = []
-for clave in sorted(maratonistas, key=lambda x: nombre_maratonista(maratonistas[x])):
-    ordenados.append((clave, maratonistas[clave]))
-
-print(dict(ordenados))
+# c. 
+def ordenar_maratones_según_tiempo(maratonista):
+    """
+    Describe una nueva lista de maratones ordenada por el tiempo que el maratonista dado tardó en completarlas, de menor a mayor.
+    Parámetros: 
+        - maratonista (dict): El maratonista según el cual se describe la nueva lista ordenada de maratones.
+    Precondición:
+        - El diccionario debe contener la clave 'Maratones'.
+    Retorna:
+        - Una lista de maratones ordenada según los tiempos de finalización de cada una del maratonista dado.
+    """
+    maratones_ordenadas = []
+    for maratón in sorted(maratonista['Maratones'], key=lambda maratón: maratón['Tiempo']):
+        maratones_ordenadas.append(maratón)
+    return maratones_ordenadas

@@ -57,3 +57,14 @@ def nombre_maratonista(maratonista):
     return maratonista['Nombre']
 
 # print(sorted(maratonistas.items(), key=lambda x: nombre_maratonista(x[1])))
+
+for maratonista in maratonistas:
+    print(maratonistas[maratonista]['Nombre'])
+
+print(sorted(maratonistas, key=lambda x: nombre_maratonista(maratonistas[x]))) # Lista de claves ordenadas alfabéticamente por nombre
+
+ordenados = []
+for clave in sorted(maratonistas, key=lambda x: nombre_maratonista(maratonistas[x])):
+    ordenados.append((clave, maratonistas[clave]))
+
+print(dict(ordenados))

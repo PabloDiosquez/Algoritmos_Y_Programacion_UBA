@@ -16,7 +16,7 @@ class ListaEnlazada:
 
     # El método append se utiliza para agregar un nuevo dato al final de la lista
     def append(self, dato):
-        nuevo = _Nodo(dato, None)
+        nuevo = _Nodo(dato)
 
         if self.prim is None:
             self.prim = nuevo # Caso borde (lista vacía)
@@ -157,3 +157,19 @@ class ListaEnlazada:
         Método especial que debe devolver un iterador para el objeto. El iterador debe ser un objeto que implementa el método __next__.
         """
         return IteradorListaEnlazada(self)
+    
+    # 15.9.2
+    def extend(self, otra_lista):
+        """
+        Extiende la lista actual agregando los elementos de otra lista enlazada.
+        Parámetros: 
+            -otra_lista: La lista enlazada cuyos elementos se agregarán a la lista actual.
+        """
+        # Verificar si la otra lista está vacía
+        if otra_lista.prim is None:
+            return  # La otra lista está vacía, no hay nada que agregar
+        # Recorrer la otra lista y agregar sus elementos a la lista actual
+        actual = otra_lista.prim
+        while actual is not None:
+            self.agregar(actual.dato)  # Llamar al método agregar de la lista actual
+            actual = actual.prox 

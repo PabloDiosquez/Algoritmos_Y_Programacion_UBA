@@ -22,9 +22,13 @@ class ListaEnlazada:
         while actual.prox is not None:
             actual = actual.prox
          # actual es el último _nodo
-        actual.prox = nuevo 
+        actual.prox = nuevo
 
-    def __pop__(self, i):
+    def insert(self, i, x):
+        """
+        """ 
+
+    def pop(self, i):
         """
         Elimina el nodo de la posición i, y devuelve el dato contenido.
         Si i está fuera de rango, se levanta la excepción IndexError.
@@ -48,9 +52,31 @@ class ListaEnlazada:
             # Guardar el dato y descartar el nodo
             dato               = nodo_actual.dato 
             nodo_anterior.prox = nodo_actual.prox   
-
         self.len -= 1
         return dato 
+    
+    def remove(self, x):
+        """
+        Borra la primera aparición del valor x en la lista.
+        Si x no está en la lista, levanta ValueError.
+        """
+        if self.prim is None: 
+            raise ValueError("Lista vacía")
+        if self.prim.dato == x:
+            # Caso particular: saltear la cabecera de la lista
+            self.prim = self.prim.prox
+        else:
+        # Buscar el nodo anterior al que contiene a x (n_ant)
+            anterior = self.prim
+            actual   = self.prim.dato
+            while actual is not None and actual.dato != x:
+                anterior = actual 
+                actual   = actual.prox 
+            if actual is None: 
+                raise ValueError("El valor no está en la lista")
+            # Descartar el nodo
+            anterior.prox = actual.prox  
+        self.len -= 1 
              
     def __str__(self) -> str:
         "Representación en cadena de texto de la lista"

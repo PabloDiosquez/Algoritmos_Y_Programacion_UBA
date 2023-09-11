@@ -1,5 +1,8 @@
 # ¿Cómo implementar una lista?
 
+from _nodo import _Nodo
+from iteradores import IteradorListaEnlazada
+
 # ------ Lista 🙊 ------
 class ListaEnlazada:
     "Modela una lista enlazada"
@@ -46,7 +49,6 @@ class ListaEnlazada:
             actual.prox = nuevo
         self.len += 1  
         
-
     def pop(self, i):
         """
         Elimina el nodo de la posición i, y devuelve el dato contenido.
@@ -118,48 +120,40 @@ class ListaEnlazada:
         # return cant_nodos
         return self.len
     
-    def index(self, x):
+    def index(self, x: any):
         """
+        Describe la posición de la primera aparición del elemento 'x' en la lista enlazada actual.
+        Parámetros:
+            x (any): El elemento que se busca en la lista. Puede ser de cualquier tipo, ya que la lista enlazada admite almacenar cualquier tipo de dato.
+        Retorna:
+            int: La posición de la primera aparición de 'x' en la lista enlazada. La posición se cuenta desde cero (0) para el primer elemento de la lista y se incrementa en uno (1) para cada elemento subsiguiente.
+        Excepciones:
+            ValueError: Se levanta una excepción de tipo ValueError si el elemento 'x' no se encuentra en la lista. Esto indica que el elemento buscado no está presente en la estructura de datos y, por lo tanto, no se puede determinar su posición.
+        Ejemplo de uso:
+            >>> lista = ListaEnlazada()
+            >>> lista.agregar(10)
+            >>> lista.agregar(20)
+            >>> lista.agregar(30)
+            >>> lista.index(20)
+            1
+        Observaciones:
+            - Este método es útil para determinar la posición de un elemento específico en la lista enlazada, lo que puede ser importante en muchos casos de uso.
+            - Si hay múltiples apariciones de 'x' en la lista, este método devolverá la posición de la primera aparición.
+            - Tener en cuenta que las posiciones se cuentan desde cero (0) en adelante, siguiendo la convención común en la programación.
         """
-        pass 
+        if self.prim is None: 
+            raise ValueError("Lista vacía")
+        actual = self.prim
+        índice = 0
+        while actual is not None and actual.dato != x:
+            actual = actual.prox
+            índice += 1
+        if actual is None:
+            raise ValueError(f'{x} no está en la lista')
+        return índice  
     
-# ------ _Nodo 🙈 ------
-
-class _Nodo:
-    def __init__(self, dato=None, prox=None):
+    def __iter__(self):
         """
-        Crea un nodo que guarda el dato 'dato' y tiene una referencia al nodo 'prox'.
-        :param dato: El dato que se almacenará en el nodo.
-        :type dato: any, opcional
-        :param prox: El nodo siguiente al nodo actual.
-        :type prox: _Nodo, opcional
+        Método especial que debe devolver un iterador para el objeto. El iterador debe ser un objeto que implementa el método __next__.
         """
-        self.dato = dato
-        self.prox = prox
-
-    def __str__(self) -> str:
-        """
-        Describe una representación en cadena de texto de un nodo.
-        :retorna: Representación en cadena de texto del nodo.
-        :rtype: str
-        """
-        return f"Nodo({self.dato})"
-
-# ------ Main 🙉 ------
-
-def __init__():
-    from iteradores import IteradorListaEnlazada
-
-    L = ListaEnlazada()
-    L.append('a')
-    L.append('b')
-    L.append('c')
-
-    # Recorriendo la lista L
-    it = IteradorListaEnlazada(L)
-    while not it.está_al_final():
-        print(it.dato_actual())
-        it.avanzar()
-
-
-__init__()
+        return IteradorListaEnlazada(self)

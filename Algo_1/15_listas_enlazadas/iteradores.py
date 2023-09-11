@@ -59,3 +59,11 @@ class IteradorListaEnlazada():
             self.lista.prim = self.actual.prox 
             self.actual = self.lista.prim  
         return self.dato_actual()
+    
+    def __next__(self):
+        "Describe el elemento actual y avanza en la iteración"
+        if self.está_al_final():
+            raise StopIteration("No hay más elementos en la lista")
+        dato = self.dato_actual()
+        self.avanzar()
+        return dato 

@@ -148,17 +148,18 @@ class _Nodo:
 # ------ Main 🙉 ------
 
 def __init__():
-    # n1 = _Nodo('a', None)
-    # print(n1)
-    # n2 = _Nodo('b', None)
-    # n1.prox = n2 
-    # print(n1.prox)
-    # print(n2)
+    from iteradores import IteradorListaEnlazada
 
     L = ListaEnlazada()
     L.append('a')
     L.append('b')
     L.append('c')
+
+    # Recorriendo la lista L
+    it = IteradorListaEnlazada(L)
+    while not it.está_al_final():
+        print(it.dato_actual())
+        it.avanzar()
 
 
 __init__()

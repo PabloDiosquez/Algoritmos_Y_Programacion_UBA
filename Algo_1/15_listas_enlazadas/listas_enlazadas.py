@@ -23,7 +23,35 @@ class ListaEnlazada:
             actual = actual.prox
          # actual es el último _nodo
         actual.prox = nuevo 
-    
+
+    def __pop__(self, i):
+        """
+        Elimina el nodo de la posición i, y devuelve el dato contenido.
+        Si i está fuera de rango, se levanta la excepción IndexError.
+        Si no se recibe la posición, devuelve el último elemento.
+        """
+        if i is None:
+            i = self.len - 1
+        if i < 0 or i >= self.len: 
+            raise IndexError("Índice fuera de rango")
+        if i == 0:
+            dato      = self.prim.dato
+            self.prim = self.prim.prox
+        else:
+            # Máquinas de parejas 👫
+            # Buscar los nodos en las posiciones (i-1) e (i)
+            nodo_anterior = self.prim
+            nodo_actual   = nodo_anterior.prox
+            for index in range(1, i):
+                nodo_anterior = nodo_actual
+                nodo_actual   = nodo_anterior.prox
+            # Guardar el dato y descartar el nodo
+            dato               = nodo_actual.dato 
+            nodo_anterior.prox = nodo_actual.prox   
+
+        self.len -= 1
+        return dato 
+             
     def __str__(self) -> str:
         "Representación en cadena de texto de la lista"
         s = "["

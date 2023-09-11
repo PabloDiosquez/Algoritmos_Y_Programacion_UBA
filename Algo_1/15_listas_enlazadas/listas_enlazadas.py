@@ -201,3 +201,22 @@ class ListaEnlazada:
                 anterior = actual 
             actual   = actual.prox       
         return cantidad_removidos
+    
+    # 15.9.5
+    def filter(self, f: function):
+        """
+        Recibe una función 'f' y describe una nueva lista enlazada con los elementos para los cuales se cumple la condición de 'f'.
+        Parámetros:
+            - La función que determina si un elemento debe ser incluido en la nueva lista.
+        Retorna:
+            - Una nueva lista enlazada con los elementos que cumplen la condición de 'f'.
+        """
+        if self.prim is None:
+            raise ValueError("Lista vacía")
+        nueva_lista = ListaEnlazada()
+        actual = self.prim 
+        while actual is not None:
+            if f(actual.dato):
+                nueva_lista.append(self.dato)
+            actual = actual.prox
+        return nueva_lista

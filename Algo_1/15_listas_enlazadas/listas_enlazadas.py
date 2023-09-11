@@ -24,9 +24,28 @@ class ListaEnlazada:
          # actual es el último _nodo
         actual.prox = nuevo
 
-    def insert(self, i, x):
+    def insert(self, i: int, x: any):
         """
+        Agrega el elemento 'x' en la posición 'i'.
+        Levanta una excepción si la posición dada es inválida.
         """ 
+        if i < 0 or i >= self.len: 
+            raise IndexError("Índice fuera de rango")
+        nuevo = _Nodo(x)
+        # Caso particular: insertar al principio
+        if i == 0:
+            nuevo.prox = self.prim
+            self.prim = nuevo
+        else: 
+            # Buscar el nodo anterior a la posición deseada
+            actual   = self.prim 
+            for _ in range(1, i):
+                actual  = actual.prox
+            # Intercalar el nuevo nodo
+            nuevo.prox  = actual.prox
+            actual.prox = nuevo
+        self.len += 1  
+        
 
     def pop(self, i):
         """
@@ -46,7 +65,7 @@ class ListaEnlazada:
             # Buscar los nodos en las posiciones (i-1) e (i)
             nodo_anterior = self.prim
             nodo_actual   = nodo_anterior.prox
-            for index in range(1, i):
+            for _ in range(1, i):
                 nodo_anterior = nodo_actual
                 nodo_actual   = nodo_anterior.prox
             # Guardar el dato y descartar el nodo
@@ -99,16 +118,13 @@ class ListaEnlazada:
         # return cant_nodos
         return self.len
     
-    def ver_lista(self):
+    def index(self, x):
         """
-        Recorre todos los nodos de la lista a través de sus enlaces, mostrando sus contenidos. 
         """
-        actual = self.prim
-        while actual is not None:
-            print(actual)
-            actual = actual.prox
+        pass 
     
 # ------ _Nodo 🙈 ------
+
 class _Nodo:
     def __init__(self, dato=None, prox=None):
         """
@@ -130,6 +146,7 @@ class _Nodo:
         return f"Nodo({self.dato})"
 
 # ------ Main 🙉 ------
+
 def __init__():
     # n1 = _Nodo('a', None)
     # print(n1)
@@ -143,6 +160,5 @@ def __init__():
     L.append('b')
     L.append('c')
 
-    L.ver_lista()
 
 __init__()

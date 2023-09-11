@@ -173,3 +173,31 @@ class ListaEnlazada:
         while actual is not None:
             self.agregar(actual.dato)  # Llamar al método agregar de la lista actual
             actual = actual.prox 
+
+    # 15.9.3
+    def remover_todos(self, x: any):
+        """
+        Elimina todas las apariciones del elemento 'x' de la lista enlazada.
+        Lanza ValueError si la lista está vacía.
+        Parámetros:
+            - x (any): El elemento que se desea eliminar de la lista.
+        Retorna
+            - La cantidad de elementos eliminados.
+    """
+        if self.prim is None:
+            raise ValueError("Lista vacía")
+        cantidad_removidos = 0
+        actual = self.prim 
+        anterior = None 
+        while actual is not None:
+            if actual.dato == x:
+                if anterior is None:
+                # El elemento a eliminar está en la primera posición
+                    self.prim = actual.prox 
+                else: 
+                    anterior.prox = actual.prox  
+                cantidad_removidos += 1
+            else:
+                anterior = actual 
+            actual   = actual.prox       
+        return cantidad_removidos

@@ -84,4 +84,28 @@ class ListaCircular:
             nuevo.prox = actual.prox
             actual.prox = nuevo
 
-        self.len += 1         
+        self.len += 1  
+
+    def remove(self, x: any):
+        """
+        Elimina la primera aparición del elemento 'x' en una lista. Describe True si la eliminación es correcta; False en caso contrario.
+        Parámetros: 
+            - x (any): El elemento cuya primera aparición se va a eliminar de una lista.
+        """
+        if self.prim is None: 
+            raise ValueError("Lista vacía")
+        
+        if self.prim.dato == x:
+            self.prim = None
+            self.ult  = None
+            return True 
+        actual   = self.prim
+        anterior = self.ult 
+        while actual.prox is not self.prim:
+            if actual.dato == x:
+                anterior.prox = actual.prox
+                return True
+            aux      =  actual
+            actual   = actual.prox
+            anterior = aux
+        return False           

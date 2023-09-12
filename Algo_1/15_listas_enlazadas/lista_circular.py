@@ -14,7 +14,7 @@ class ListaCircular:
         self.ult       = None
         self.len       = 0  
 
-    def append(self, x):
+    def append(self, x: any):
         """
         Inserta un nuevo nodo con el valor dado al final de la lista circular.
         Parámetros:
@@ -55,3 +55,33 @@ class ListaCircular:
             self.ult    = actual
         self.len -= 1
         return eliminado
+    
+    def insert(self, i: int, x: any):
+        """
+        Inserta el elemento 'x' en la posición 'i' de una lista. Si el índice está fuera de rango (menor que 0 o mayor o igual que la longitud de la lista) lanza IndexError.
+        Parámetros:
+            - i: La posición en la que se va a insertar el nuevo nodo (0 <= i < longitud de la lista).
+            - x: El valor que se va a insertar en el nuevo nodo.
+        """
+        # Posición inválida
+        if i < 0 or i >= self.len:
+            raise IndexError('Índice fuera de rango')
+        nuevo  =_Nodo(x)
+        # Si la lista está vacía, el nuevo nodo se convierte en la cabeza y el último.
+        if self.prim is None:
+            self.prim     = nuevo
+            self.ult      = nuevo
+            self.ult.prox = self.prim
+        # Si la posición es 0, el nuevo nodo se inserta antes de la cabeza.
+        if i == 0:
+            nuevo.prox    = self.prim
+            self.prim     = nuevo 
+            self.ult.prox = self.prim
+        else:
+            actual = self.prim
+            for _ in range(1, i):
+                actual = actual.prox 
+            nuevo.prox = actual.prox
+            actual.prox = nuevo
+
+        self.len += 1         

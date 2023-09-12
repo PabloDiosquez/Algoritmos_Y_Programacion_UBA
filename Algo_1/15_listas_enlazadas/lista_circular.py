@@ -88,17 +88,23 @@ class ListaCircular:
 
     def remove(self, x: any):
         """
-        Elimina la primera aparición del elemento 'x' en una lista. Describe True si la eliminación es correcta; False en caso contrario.
-        Parámetros: 
-            - x (any): El elemento cuya primera aparición se va a eliminar de una lista.
+        Elimina la primera aparición del elemento 'x' en una lista circular.
+        Parámetros:
+            - x (any): El elemento cuya primera aparición se va a eliminar de la lista.
+        Retorna:
+            - bool: True si la eliminación es correcta; False en caso contrario o si la lista está vacía.
         """
         if self.prim is None: 
             raise ValueError("Lista vacía")
-        
         if self.prim.dato == x:
-            self.prim = None
-            self.ult  = None
+            if self.prim.prox is self.ult: # La lista tiene un solo elemento
+                self.prim = None
+                self.ult  = None
+            else:
+                self.prim     = self.prim.prox
+                self.ult.prox = self.prim  
             return True 
+        # Recorre la lista hasta encontrar el elemento o volver al inicio
         actual   = self.prim
         anterior = self.ult 
         while actual.prox is not self.prim:

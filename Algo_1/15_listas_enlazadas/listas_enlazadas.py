@@ -202,6 +202,28 @@ class ListaEnlazada:
             actual   = actual.prox       
         return cantidad_removidos
     
+    # 15.9.4
+    def duplicar_elemento(self, x: any):
+        """
+        Recibe un elemento 'x' y duplica todas las apariciones del mismo.
+        Parámetros:
+            - x (any): El elemento que se duplicará en la lista.
+        """
+        if self.prim is None:
+            raise ValueError("Lista vacía")
+        actual = self.prim 
+        while actual is not None:
+            if actual.dato == x: 
+                # Crear un nuevo nodo con el mismo valor
+                nuevo       = _Nodo(x)
+                # Insertar el nuevo nodo después del nodo actual
+                nuevo.prox  = actual.prox
+                actual.prox = nuevo
+                # Avanzar al siguiente nodo (el duplicado ya ha sido procesado)
+                actual      = nuevo.prox   
+            else:
+                actual = actual.prox   
+        
     # 15.9.5
     def filter(self, f: function):
         """

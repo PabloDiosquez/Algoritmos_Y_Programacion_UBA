@@ -172,7 +172,8 @@ class ListaEnlazada:
         actual = otra_lista.prim
         while actual is not None:
             self.agregar(actual.dato)  # Llamar al método agregar de la lista actual
-            actual = actual.prox 
+            actual = actual.prox
+        self.len += len(otra_lista) 
 
     # 15.9.3
     def remover_todos(self, x: any):
@@ -197,6 +198,7 @@ class ListaEnlazada:
                 else: 
                     anterior.prox = actual.prox  
                 cantidad_removidos += 1
+                self.len -= 1
             else:
                 anterior = actual 
             actual   = actual.prox       
@@ -220,7 +222,8 @@ class ListaEnlazada:
                 nuevo.prox  = actual.prox
                 actual.prox = nuevo
                 # Avanzar al siguiente nodo (el duplicado ya ha sido procesado)
-                actual      = nuevo.prox   
+                actual      = nuevo.prox
+                self.len += 1    
             else:
                 actual = actual.prox   
         

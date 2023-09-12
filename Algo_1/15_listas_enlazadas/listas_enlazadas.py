@@ -220,3 +220,21 @@ class ListaEnlazada:
                 nueva_lista.append(self.dato)
             actual = actual.prox
         return nueva_lista
+    
+    # 15.9.6
+    def reverse(self):
+        """
+        Invierte el orden de una lista de manera que el primer elemento
+        se convierte en el último y el último se convierte en el primero. El
+        orden de los elementos en el medio de la lista también se invierte.
+        """
+        if self.prim is None or self.prim.prox is None: # La lista está vacía o tiene un solo elemento, no se necesita invertir.
+            return 
+        actual   = self.prim
+        anterior = None 
+        while actual is not None: 
+            siguiente   = actual.prox
+            actual.prox = anterior
+            anterior    = actual  
+            actual      = siguiente
+        self.prim = anterior 

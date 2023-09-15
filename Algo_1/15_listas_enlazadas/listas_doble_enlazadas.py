@@ -67,11 +67,24 @@ class ListaDobleEnlazada:
 
     def pop(self):
         """
-        Elimina el último elemento de una lista doblemente enlazada.
+        Elimina el último elemento de una lista doblemente enlazada y lo describe.
         Excepciones:
             - ValueError: Se lanza si la lista doblemente enlazada está vacía al intentar eliminar el último elemento.
+        Observación:
+            - La función modifica la estructura de la lista al eliminar el último elemento.
+            - La longitud de la lista (self.len) se reduce en 1 después de eliminar el elemento.
         """
-        pass 
+        if self.prim is None:
+            raise ValueError("Lista vacía")
+        elemento_eliminado = self.ult.dato
+        if self.len == 1:
+            self.prim = None
+            self.ult  = None
+        else:
+            self.ult      = self.ult.ant
+            self.ult.prox = None 
+        self.len -= 1
+        return elemento_eliminado  
     
     def remove(self, x: any):
         """
@@ -82,4 +95,24 @@ class ListaDobleEnlazada:
             - ValueError: Se lanza si la lista doblemente enlazada está vacía o si el elemento 'x' no se encuentra en la lista.
             - La función modifica la estructura de la lista al eliminar el elemento 'x'. Si hay múltiples instancias de 'x' en la lista, solo se eliminará la primera aparición encontrada.
         """
-        pass 
+        if self.prim is None:
+            raise ValueError("Lista vacía")
+        
+        actual = self.prim 
+        while actual:
+            if actual.dato == x:
+                if actual.ant:
+                    actual.ant.prox = actual.prox
+                else:
+                    self.prim = actual.prox
+
+                if actual.prox:
+                     actual.prox.ant = actual.ant
+                else:
+                    self.ult = actual.ant  
+                actual.prox.ant = actual.ant 
+                self.len -= 1
+                return   
+            actual = actual.prox
+        
+        raise ValueError(f"El elemento {x} no se encuentra en la lista")

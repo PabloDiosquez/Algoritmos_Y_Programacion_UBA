@@ -9,7 +9,8 @@ class ListaDobleEnlazada:
     def __init__(self):
         "Inicializa una lista doblemente enlazada" 
         self.prim = None 
-        self.ult  = None 
+        self.ult  = None
+        self.len  = 0 
 
     def append(self, dato: any):
         """
@@ -17,14 +18,17 @@ class ListaDobleEnlazada:
         Parámetros:
             - dato (any): El dato que se desea agregar al final de la lista.
         """
-        nuevo = _NodoDoble(dato)
+        nuevo = _NodoDoble(dato) # Creamos un nuevo nodo con el dato proporcionado.
+        # Caso especial: la lista está vacía.
         if self.prim is None:
             self.prim = nuevo 
-            self.ult = nuevo 
+            self.ult  = nuevo 
         else:
+            # Establecemos las conexiones apropiadas para el nuevo nodo.
             nuevo.ant     = self.ult
             self.ult.prox = nuevo   
-            self.ult      = nuevo 
+            self.ult      = nuevo
+        self.len += 1 # Incrementamos la longitud de la lista en 1.
 
     def insert(self, i: int, x: any):
         """
@@ -36,7 +40,30 @@ class ListaDobleEnlazada:
         IndexError: Se lanza si la posición 'i' está fuera de rango, es decir, si 'i' es menor que 0 o mayor o igual que la longitud actual de la lista.
             - Esta función modificará la estructura de la lista doblemente enlazada al insertar el elemento 'x', por lo que la longitud de la lista aumentará en 1 después de la operación.
         """
-        pass 
+        if i < 0 or i > self.len:
+            raise IndexError("Índice fuera de rango")
+        nuevo = _NodoDoble(x)
+        # Insertar al principio de la lista
+        if i == 0:
+            nuevo.prox = self.prim
+            if self.prim:
+                self.prim.anterior = nuevo 
+            self.prim  = nuevo
+        # Insertar al final de la lista.
+        elif i == self.len:
+            nuevo.ant = self.ult
+            if self.ult:
+                self.ult.prox = nuevo 
+            self.ult = nuevo 
+        # Insertar en una posición intermedia 
+        else:     
+            actual   = self.prim 
+            for _ in range(i):
+                nuevo.prox      = actual
+                nuevo.ant       = actual.ant  
+                actual.ant.prox = nuevo
+                actual.ant      = nuevo     
+        self.len += 1    
 
     def pop(self):
         """

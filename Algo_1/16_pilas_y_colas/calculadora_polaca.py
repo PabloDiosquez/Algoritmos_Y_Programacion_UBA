@@ -53,15 +53,7 @@ def calculadora_polaca(elementos):
             # Si hubo problemas al desapilar.
             except IndexError:
                 raise ValueError("Faltan operandos")
-
-            if elemento == '+':
-                resultado = operando2 + operando1
-            elif elemento == '-':
-                resultado = operando2 - operando1
-            elif elemento == '*':
-                resultado = operando2 * operando1
-            elif elemento == '/':
-                resultado = operando2 / operando1
+            resultado = operar(operando1, operando2, elemento)
             print("DEBUG: apila ", resultado)
             p.apilar(resultado)
         
@@ -69,6 +61,28 @@ def calculadora_polaca(elementos):
     resultado = p.desapilar()
     if not p.está_vacía():
         raise ValueError("Sobran operandos")
+    return resultado
+
+def operar(operando1: float, operando2: float, operador: str):
+    """
+    Describe la operación binaria entre los operandos dados según el operador especificado.
+    Parámetros:
+        - operando1: El primer operando  (divisor para '/' y sustraendo para '-' y '*').
+        - operando2: El segundo operando (dividendo para '/' y minuendo para '-' y '*').
+        - operador: El operador de la operación ('+', '-', '*', '/').
+    """
+    if operador == '+':
+        resultado = operando2 + operando1
+    elif operador == '-':
+        resultado = operando2 - operando1
+    elif operador == '*':
+        resultado = operando2 * operando1
+    elif operador == '/':
+        if not operando1:
+            raise ZeroDivisionError("No se puede dividir por 0")
+        resultado = operando2 / operando1
+    else:
+        raise ValueError("Operador no válido. Use '+', '-', '*', o '/'.")
     return resultado
          
 def main():

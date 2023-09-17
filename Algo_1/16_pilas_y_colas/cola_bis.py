@@ -17,7 +17,7 @@ class Cola:
         """
         Indica si la cola está vacía.
         """ 
-        return not self.items.__len__
+        return len(self.items) == 0
 
     def encolar(self, x: any):
         """

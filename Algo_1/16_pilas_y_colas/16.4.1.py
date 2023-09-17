@@ -34,26 +34,12 @@ class TorreDeControl:
         """
         if self.arribos.está_vacía() and self.despegues.está_vacía():
             return "No hay vuelos en espera."
-        arribos   = []
-        while not self.arribos.está_vacía():
-            arribo = self.arribos.desencolar()
-            arribos.append(arribo)
-        despegues = []
-        while not self.despegues.está_vacía():
-            despegue = self.despegues.desencolar()
-            despegues.append(despegue)
-
-        estado = "Vuelos en espera:\n"
-        if arribos:
-            estado += "Arribos: "
-            for arribo in arribos:
-                estado += f" {arribo} "
-        if despegues:
-            estado += "Despegues: "
-            for despegue in despegues:
-                estado += f" {despegue} "
+        estado = ""
+        if not self.arribos.está_vacía():
+            estado += "Vuelos esperando para aterrizar: " + ", ".join(self.arribos.items)
+        if not self.despegues.está_vacía():
+            estado += "\nVuelos esperando para despegar: " + ", ".join(self.despegues.items)
         return estado 
-
 
     def nuevo_arribo(self, vuelo: str):
         """
@@ -80,12 +66,26 @@ class TorreDeControl:
         if not self.arribos.está_vacía():
             arribo = self.arribos.desencolar()
             return f"El vuelo {arribo} aterrizó con éxito"
-        elif not self.despegues.está_vacía():
-            return f"El vuelo {arribo} despegó con éxito"
+        if not self.despegues.está_vacía():
+            despegue = self.despegues.desencolar()
+            return f"El vuelo {despegue} despegó con éxito"
         return "No hay vuelos en espera." 
     
-torre = TorreDeControl()
-torre.nuevo_arribo('AR156')
-torre.nueva_partida('KLM1267')
-torre.nuevo_arribo('AR32')
-print(torre.ver_estado())
+def main():
+    torre = TorreDeControl()
+    torre.nuevo_arribo('AR156')
+    torre.nueva_partida('KLM1267')
+    torre.nuevo_arribo('AR32')
+    print(torre.ver_estado())
+    # Vuelos esperando para aterrizar: AR156, AR32
+    # Vuelos esperando para despegar: KLM1267
+    print(torre.asignar_pista())
+    # El vuelo AR156 aterrizó con éxito.
+    print(torre.asignar_pista())
+    # El vuelo AR32 aterrizó con éxito.
+    print(torre.asignar_pista())
+    # El vuelo KLM1267 despegó con éxito.
+    print(torre.asignar_pista())
+    # No hay vuelos en espera.
+
+main()

@@ -31,4 +31,13 @@ class Pila:
         """
         if self.está_vacía():
             raise ValueError("La pila está vacía")
-        return self.items.pop() 
+        return self.items.pop()
+
+    def ver_tope(self):
+        """
+        Describe el tope de la pila dada.
+        Si la pila está vacía levanta una excepción.
+        """ 
+        if self.está_vacía:
+            raise ValueError("Pila vacía")
+        return self.items[-1]

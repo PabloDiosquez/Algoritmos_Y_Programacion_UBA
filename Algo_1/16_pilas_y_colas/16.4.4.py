@@ -20,20 +20,31 @@ class Carta:
     def __init__(self, palo: Palo, valor: int):
         """
         Inicializa una carta con un palo y un valor.
+        Parámetros:
+            palo (Palo): El palo de la carta.
+            valor (int): El valor de la carta.
         Pre:
-            - Los valores deben estar comprendidos entre 1 y 12 inclusive.
+            - 'valor' debe estar comprendido entre 1 y 12 inclusive.
         """
         if not 1 <= valor <= 12:
             raise ValueError("Los valores deben estar comprendidos entre 1 y 12 inclusive")
         self.palo  = palo 
         self.valor = valor 
 
-    def palo(self):
-        "Describe el palo de una carta"
+    def obtener_palo(self):
+        """
+        Obtiene el palo de la carta.
+        Retorna:
+            - El palo de la carta (Palo).
+        """
         return self.palo
     
-    def valor(self):
-        "Describe el valor de una carta"
+    def obtener_valor(self):
+        """
+        Obtiene el valor de la carta.
+        Retorna:
+            - El valor de la carta (int).
+        """
         return self.valor
     
 class Solitario:
@@ -49,6 +60,10 @@ class Solitario:
             - carta (Carta): La carta a apilar.
         """
         carta_al_tope = self.pila.ver_tope()
-        if carta.palo.value == carta_al_tope.palo.value or carta.valor != carta_al_tope.valor - 1:
+        # Comprobar si la carta es de distinto palo y un número inmediatamente inferior
+        if (
+            carta.palo.value == carta_al_tope.palo.value or 
+            carta.valor != carta_al_tope.valor - 1
+            ):
             raise ValueError("La carta no puede apilarse.")
         self.pila.apilar(carta)

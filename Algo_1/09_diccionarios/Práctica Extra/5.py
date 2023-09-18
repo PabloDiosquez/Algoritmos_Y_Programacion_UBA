@@ -5,18 +5,20 @@ def promedio_de_notas_en_intento(estudiantes: list[dict], intento):
     Describe el promedio de notas de los estudiantes en el intento 'intento' de rendir un parcial.
     Parámetros:
         - estudiantes (list[dict]): Lista de los estudiantes guardada por el profesor. Cada alumno será un diccionario que debe tener las claves 'Nombre', 'Apellido', 'Intento' y 'Nota'.
-        intento (int): El intento del parcial para el cual se calculará el promedio. 
+        - intento (int): El intento del parcial para el cual se calculará el promedio. 
     Retorna:
         - El promedio de las notas de los estudiantes en el intento 'intento'. 
     """
     if not estudiantes: raise ValueError("Lista de estudiantes vacía")
-    total_notas       = 0
-    total_estudiantes = 0
+    total_notas          = 0
+    cantidad_estudiantes = 0
     for estudiante in estudiantes:
         if estudiante['Intento'] == intento:
             total_notas += estudiante['Nota']
-            total_estudiantes += 1
-    return total_notas / total_estudiantes
+            cantidad_estudiantes += 1
+    if not cantidad_estudiantes:
+        raise ZeroDivisionError(f"No hay estudiantes que hayan rendido en el intento {intento}")
+    return total_notas / cantidad_estudiantes
 
 # Ejemplo de uso:
 lista_notas = [

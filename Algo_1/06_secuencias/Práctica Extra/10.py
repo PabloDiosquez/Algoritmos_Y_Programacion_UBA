@@ -29,7 +29,7 @@ def info_paises(paises: list):
         print(f"Nombre: {pais[0]}")
         print(f"Capital: {pais[1]}")
         print(f"Continente: {pais[2]}")
-        print(" - "*10) 
+        print(" ▪ "*10) 
 
 def main():
     paises = []

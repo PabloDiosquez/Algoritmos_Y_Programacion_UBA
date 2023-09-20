@@ -16,7 +16,7 @@ class Pila:
         """
         Indica si la pila está vacía.
         """
-        return not self.items.__len__() 
+        return len(self.items) == 0
 
     def apilar(self, x: any):
         """

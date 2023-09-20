@@ -10,7 +10,7 @@ class PilaConMáximo():
     Modela una estructura que combina las operaciones de Pila (apilar(elemento) y desapilar())
     y proporciona el método obtener_máximo() en tiempo constante.
     Invariante:
-            - Si la pila principal está vacía debe estar vacía la pila de máximos.
+            - Si la pila principal está vacía debe estar vacía la pila de máximos. Y por el contrario, si la pila principal no está vacía, no debe estar vacía pila de máximos tampoco.
     """
     def __init__(self):
         """
@@ -47,7 +47,6 @@ class PilaConMáximo():
         """
         if self.pila.está_vacía():
             raise ValueError("Pila vacía")
-        
         desapilado = self.pila.desapilar()
         if desapilado == self.máximos.ver_tope():
             self.máximos.desapilar()
@@ -65,10 +64,49 @@ class PilaConMáximo():
             raise ValueError("Pila vacía")
         return self.máximos.ver_tope()
     
-# Usa dos pilas: Como se menciona en la pregunta, la clave para resolver este problema es utilizar dos pilas. Una pila contendrá los elementos que se van apilando y desapilando como de costumbre, mientras que la otra pila contendrá los máximos en cada momento.
+# Solución alternativa 🐍 
+class PilaConMaximo:
+    def __init__(self):
+        self.elementos = []  # Pila para almacenar elementos
+        self.maximos = []    # Pila para realizar seguimiento de los máximos
 
-# Actualizar la pila de máximos: Cada vez que apiles un elemento en la pila principal, verifica si es mayor que el elemento actual en la pila de máximos. Si es así, apila este nuevo elemento en la pila de máximos. Si no, simplemente repite el elemento actual en la pila de máximos. Esto asegurará que la pila de máximos siempre tenga el máximo valor en la parte superior.
+    def apilar(self, elemento):
+        self.elementos.append(elemento)
 
-# Eliminar elementos de la pila de máximos: Cuando desapiles un elemento de la pila principal, también verifica si este elemento es igual al elemento actual en la pila de máximos. Si son iguales, también desapila el elemento de la pila de máximos, ya que ese elemento ya no es el máximo en la pila principal.
+        # Si la pila de máximos está vacía o el nuevo elemento es mayor o igual al máximo actual,
+        # lo agregamos a la pila de máximos.
+        if not self.maximos or elemento >= self.maximos[-1]:
+            self.maximos.append(elemento)
 
-# Obtener el máximo en tiempo constante: Para obtener el máximo en tiempo constante, simplemente mira el elemento en la parte superior de la pila de máximos en cualquier momento. Ese elemento será el máximo valor en la pila principal en ese momento
+    def desapilar(self):
+        if not self.elementos:
+            return None  # La pila está vacía
+
+        elemento_desapilado = self.elementos.pop()
+
+        # Si el elemento desapilado es igual al máximo actual, lo eliminamos de la pila de máximos.
+        if elemento_desapilado == self.maximos[-1]:
+            self.maximos.pop()
+
+        return elemento_desapilado
+
+    def obtener_maximo(self):
+        if not self.maximos:
+            return None  # La pila está vacía
+
+        return self.maximos[-1]
+
+# Ejemplo de uso:
+pila = PilaConMaximo()
+
+pila.apilar(3)
+pila.apilar(5)
+pila.apilar(2)
+pila.apilar(7)
+
+print("Máximo actual:", pila.obtener_maximo())  # Debería imprimir 7
+
+pila.desapilar()
+pila.desapilar()
+
+print("Máximo actual:", pila.obtener_maximo())  # Debería imprimir 5

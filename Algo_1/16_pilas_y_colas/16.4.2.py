@@ -77,32 +77,51 @@ class Impresora:
         if self.tinta == 0:
             return "No tengo tinta"
         self.tinta -= 1
-        return self.documentos.desencolar()
-    
+        return f"Imprimiendo: {self.documentos.desencolar()}"
     
 class Oficina:
-    "Modela una oficina"
+    "Modela una oficina 🏢"
+
     def __init__(self):
         """
+        Inicializa una instancia de la clase Oficina.
         """
         self.impresoras = {}
 
-    def agregar_impresora(self, impresora):
+    def agregar_impresora(self, impresora: Impresora):
         """
+        Agrega una impresora a la oficina.
+        Parámetros:
+            - impresora (Impresora): La impresora a agregar a la oficina.
         """
-        pass 
+        self.impresoras.update({impresora.nombre: impresora}) 
 
-    def impresora(self, impresora):
+    def impresora(self, nombre_impresora: str):
         """
+        Describe una impresora por su nombre.
+        Parámetros:
+            - nombre_impresora (str): El nombre de la impresora a obtener.
+        Precondición:
+            - 'nombre_impresora' debe ser un nombre de una de las impresoras de una oficina.
         """
-        pass 
+        if nombre_impresora not in self.impresoras:
+            raise ValueError("El nombre dado no pertenece a la lista de impresoras de la oficina")
+        return self.impresoras[nombre_impresora] 
 
-    def quitar_impresora(self, impresora: str):
+    def quitar_impresora(self, nombre_impresora: str):
         """
+        Quita la impresora de nombre 'nombre_impresora' de una oficina.
+        Parámetros:
+            - nombre_impresora (str): El nombre de la impresora a quitar de una oficina.
         """
-        pass 
+        self.impresoras.pop(nombre_impresora, "Impresora desconocida 🖨") 
 
     def obtener_impresora_libre(self):
         """
+        Describe la impresora con menos documentos encolados de una oficina.
+        Si la oficina no tiene impresoras lanza ValueError.
         """
-        pass 
+        if not self.impresoras:
+            raise ValueError("No hay impresoras en la oficina")
+        impresoras_ordenadas = sorted(self.impresoras, key=lambda impresora: len(impresora.documentos.items))
+        return impresoras_ordenadas[0] 

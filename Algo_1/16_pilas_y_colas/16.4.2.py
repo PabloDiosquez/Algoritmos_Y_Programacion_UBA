@@ -79,6 +79,14 @@ class Impresora:
         self.tinta -= 1
         return f"Imprimiendo: {self.documentos.desencolar()}"
     
+    def total_documentos_encolados(self):
+        """
+        Describe la cantidad de documentos encolados en una impresora.
+        Retorna:
+            - total documentos encolados (int): La cantidad de documentos en la cola de impresión. 
+        """
+        return len(self.documentos.items)
+    
 class Oficina:
     "Modela una oficina 🏢"
 
@@ -86,7 +94,7 @@ class Oficina:
         """
         Inicializa una instancia de la clase Oficina.
         """
-        self.impresoras = {}
+        self.impresoras = []
 
     def agregar_impresora(self, impresora: Impresora):
         """
@@ -94,7 +102,7 @@ class Oficina:
         Parámetros:
             - impresora (Impresora): La impresora a agregar a la oficina.
         """
-        self.impresoras.update({impresora.nombre: impresora}) 
+        self.impresoras.append(impresora) 
 
     def impresora(self, nombre_impresora: str):
         """
@@ -104,24 +112,46 @@ class Oficina:
         Precondición:
             - 'nombre_impresora' debe ser un nombre de una de las impresoras de una oficina.
         """
-        if nombre_impresora not in self.impresoras:
-            raise ValueError("El nombre dado no pertenece a la lista de impresoras de la oficina")
-        return self.impresoras[nombre_impresora] 
+        if not self.impresoras:
+            raise ValueError("Lista de impresoras de la oficina vacía")
+        for impresora in self.impresoras:
+            if impresora.nombre == nombre_impresora:
+                return impresora 
 
     def quitar_impresora(self, nombre_impresora: str):
         """
         Quita la impresora de nombre 'nombre_impresora' de una oficina.
         Parámetros:
             - nombre_impresora (str): El nombre de la impresora a quitar de una oficina.
+        Precondiciones:
+            - La lista de impresoras de la oficina no debe ser vacía. En caso de serlo, lanza ValueError.
+            - 'nombre_impresora' debe ser el nombre de una de las impresoras de la oficina.
         """
-        self.impresoras.pop(nombre_impresora, "Impresora desconocida 🖨") 
+        if not self.impresoras:
+            raise ValueError("Lista de impresoras de la oficina vacía")
+        for impresora in self.impresoras:
+            if impresora.nombre == nombre_impresora:
+                índice = self.impresoras.index(impresora)
+                break 
+        return self.impresoras.pop(índice)
 
     def obtener_impresora_libre(self):
         """
-        Describe la impresora con menos documentos encolados de una oficina.
-        Si la oficina no tiene impresoras lanza ValueError.
+        Describe la impresora con la menor cantidad de documentos encolados en la oficina.
+        Si la oficina no tiene impresoras, lanza un ValueError.
+        Devuelve:
+            - impresora_con_menos_documentos_encolados (Impresora): La impresora con la menor cantidad de documentos encolados.
+        Observaciones:
+            - ValueError: Si la lista de impresoras de la oficina está vacía.
         """
         if not self.impresoras:
-            raise ValueError("No hay impresoras en la oficina")
-        impresoras_ordenadas = sorted(self.impresoras, key=lambda impresora: len(impresora.documentos.items))
-        return impresoras_ordenadas[0] 
+            raise ValueError("Lista de impresoras de la oficina vacía")
+        # Inicializamos la impresora con menos documentos encolados y la cantidad mínima
+        impresora_con_menos_documentos_encolados = self.impresoras[0]
+        cantidad_mínima_documentos_encolados = impresora_con_menos_documentos_encolados.documentos.total_documentos_encolados()
+        # Iteramos por todas las impresoras para encontrar la que tenga menos documentos
+        for impresora in self.impresoras[1:]:
+            if impresora.documentos.total_documentos_encolados() < cantidad_mínima_documentos_encolados:
+                impresora_con_menos_documentos_encolados = impresora
+                cantidad_mínima_documentos_encolados = len(impresora.documentos.items)
+        return impresora_con_menos_documentos_encolados

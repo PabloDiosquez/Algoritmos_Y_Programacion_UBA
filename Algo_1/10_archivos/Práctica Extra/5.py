@@ -45,4 +45,29 @@ def mostrar_stock(archivo_librería):
             print(f"Precio: {precio}")
             print(f"Stock: {stock}\n")
 
+# b.
+def agregar_producto(archivo_librería, producto: dict):
+    """
+    Agrega un producto al archivo de una librería.
+    Esta función permite agregar un nuevo producto al archivo de una librería representado por 'archivo_libreria' en formato de texto. El producto debe proporcionarse como un diccionario con las claves 'nombre', 'código', 'precio' y 'stock'.
+    Parámetros:
+    - archivo_libreria (str): La ruta del archivo de la librería en el que se agregará el producto.
+    - producto (dict): Un diccionario que contiene la información del producto a agregar, incluyendo 'nombre', 'código', 'precio' y 'stock'.
+    """
+    with open(archivo_librería, "a") as file_librería:
+        nombre = producto["nombre"]
+        código = producto["código"]
+        precio = producto["precio"]
+        stock  = producto["stock"]
+        file_librería.write(f"\n{nombre};{código};{precio};{stock}")
+
+producto = {
+    "nombre": "HojasA4",
+    "código": 35662,
+    "precio": 600,
+    "stock": 45
+}
+
+# Uso de las funciones definidas con anterioridad
+agregar_producto(ruta, producto)
 mostrar_stock(ruta)

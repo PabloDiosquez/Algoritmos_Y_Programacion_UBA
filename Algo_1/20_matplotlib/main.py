@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import style
+import random
 
 # Generate random data for langs and y
 # langs_data = np.random.random(50) * 100
@@ -75,12 +76,91 @@ people = ['A', 'B', 'C', 'D', 'E']
 votes = [10, 12, 5, 7, 9]
 
 # Create a pie chart to visualize the distribution of votes.
-plt.pie(votes, labels=None)
+# style.use('ggplot')
+# plt.pie(votes, labels=None)
 
 # Add a legend to the pie chart to associate labels with people's names.
-plt.legend(people, loc='upper left')
+# plt.legend(people, loc='upper left')
+
 # ▪▪▪
 
+## Generate random data for x1 and y1
+x1, y1 = np.random.random(100), np.random.random(100)
+
+# Create a figure and scatter plot for x1 and y1
+# plt.figure(1)
+# plt.scatter(x1, y1)
+
+# Generate a sequence of numbers for x2 and random data for y2
+# x2, y2 = np.arange(100), np.random.random(100)
+
+# Create a new figure and line plot for x2 and y2
+# plt.figure(2)
+# plt.plot(x2, y2)
+
+# ▪▪▪
+
+# Create an array of numbers from 0 to 99 for x
+x = np.arange(100)
+
+# Create a 2x2 grid of subplots within a single figure
+# fig, axes = plt.subplots(2, 2)
+
+# # Set the title for the entire figure
+# fig.suptitle('Four Plots')
+
+# # Plot the sine wave in the top-left subplot
+# axes[0, 0].plot(x, np.sin(x))
+# axes[0, 0].set_title('Sine Wave')
+
+# # Plot a random function in the top-right subplot
+# axes[0, 1].plot(x, np.random.random(100))
+# axes[0, 1].set_title('Random Function')
+
+# # Plot the cosine wave in the bottom-left subplot
+# axes[1, 0].plot(x, np.cos(x))
+# axes[1, 0].set_title('Cosine Wave')
+
+# # Plot the logarithmic function in the bottom-right subplot
+# axes[1, 1].plot(x, np.log(x))
+# axes[1, 1].set_title('Log Function')
+
+# ▪▪▪
+# Create a 3D plot with a set of random data points
+# ax = plt.axes(projection='3d')
+# x = np.random.random(100)
+# y = np.random.random(100)
+# z = np.random.random(100)
+# ax.scatter(x, y, z)
+# ax.set_title('3D Plot')
+# ax.set_xlabel('X')
+# ax.set_ylabel('Y')
+# ax.set_zlabel('Z')
+
+# Create a 3D line plot with cosine and sine functions
+# x = np.arange(0, 100, 0.1)
+# y = np.cos(x)
+# z = np.sin(x)
+# ax.plot(x, y, z)
+
+# Create a 3D surface plot with a sine function in the X-Y plane
+# x = np.arange(-10, 10, 0.1)
+# y = np.arange(-10, 10, 0.1)
+# X, Y = np.meshgrid(x, y)
+# Z = np.sin(X) + np.sin(Y)
+# ax.plot_surface(X, Y, Z, cmap='Spectral')
+
+# ▪▪▪
+
+# Initialize a list to count the number of 'Heads' and 'Tails'
+heads_tails = [0, 0]
+
+# Loop to simulate coin flips and update the count
+# for _ in range(100000):
+#     heads_tails[random.randint(0, 1)] += 1
+#     # Create a bar chart to show the count of 'Heads' and 'Tails'
+#     plt.bar(['Heads', 'Tails'], heads_tails, color=['r', 'b'])
+#     plt.pause(0.001)  # Pause to display the updated bar chart
 
 # Display the plots
 plt.show()

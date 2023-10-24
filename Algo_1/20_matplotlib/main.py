@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import style
 
 # Generate random data for langs and y
 # langs_data = np.random.random(50) * 100
@@ -43,22 +44,43 @@ heights = np.random.normal(175, 8, 1000)
 # plt.boxplot(heights)
 
 # ▪▪▪
+# Create a list of years from 2001 to 2010.
+years = [2001 + x for x in range(10)]
+
+# Define a list of income data for each year.
+income = [55, 57, 67, 66, 45, 87, 78, 56, 68, 90]
+
+# Define a list of income ticks to use for the y-axis.
+income_ticks = [y for y in range(50, 96, 3)]
+
+# ▪▪▪
+
+# Generate random stock data for three companies (Company 1, Company 2, and Company 3).
+stock_a = np.random.random(10) * 100
+stock_b = np.random.random(10) * 100
+stock_c = np.random.random(10) * 100
+
+# Plot the stock data for each company and add labels.
+# plt.plot(stock_a, label='Company 1')
+# plt.plot(stock_b, label='Company 2')
+# plt.plot(stock_c, label='Company 3')
+
+# Create a legend to identify the companies on the plot.
+# plt.legend(loc='lower right')
+
+# ▪▪▪
+
+# Define a list of people and the number of votes they received.
+people = ['A', 'B', 'C', 'D', 'E']
+votes = [10, 12, 5, 7, 9]
+
+# Create a pie chart to visualize the distribution of votes.
+plt.pie(votes, labels=None)
+
+# Add a legend to the pie chart to associate labels with people's names.
+plt.legend(people, loc='upper left')
+# ▪▪▪
+
 
 # Display the plots
-plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Display the plot
 plt.show()

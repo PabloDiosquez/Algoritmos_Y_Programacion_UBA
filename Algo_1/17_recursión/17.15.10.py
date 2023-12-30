@@ -2,7 +2,8 @@
 # hay más letras A o letras E.
 
 # Una primer idea... 🤔
-    
+
+# 1.   
 def mayor_cantidad_de__o_de__(cadena: str, letra1: str, letra2: str):
     """
     Dada una cadena determina si hay más letras 'letra1' o letras 'letra2'
@@ -30,6 +31,53 @@ def mayor_cantidad_de__o_de__hasta(cadena: str, letra1: str, contador1: int, let
     if letra_actual == letra1: return mayor_cantidad_de__o_de__hasta(cadena, letra1, contador1 + 1, letra2, contador2, hasta-1)
     elif letra_actual == letra2: return mayor_cantidad_de__o_de__hasta(cadena, letra1, contador1, letra2, contador2 + 1, hasta-1)
     return mayor_cantidad_de__o_de__hasta(cadena, letra1, contador1, letra2, contador2, hasta-1) 
+
+# 2.
+
+def más_A_o_más_E(cadena: str) -> str:
+    """
+    Determina si hay más letras 'A' o 'E' en una cadena dada.
+
+    Parámetros:
+    - cadena (str): La cadena en la que se compararán las letras 'A' y 'E'.
+
+    Retorna:
+    str: 'Más letras 'A'' si hay más letras 'A', 'Más letras 'E'' si hay más letras 'E',
+         o 'Hay igual cantidad de letras 'A' y 'E'' si son iguales.
+
+    Ejemplo:
+    >>> más_A_o_más_E("AEAAEAEAEA")
+    'Más letras 'A''
+    """
+    return _más_A_o_más_E(cadena, 0, 0)
+
+def _más_A_o_más_E(cadena: str, contadorA: int, contadorE: int) -> str:
+    """
+    Función auxiliar para comparar recursivamente la cantidad de letras 'A' y 'E' en una cadena.
+
+    Parámetros:
+    - cadena (str): La cadena en la que se compararán las letras 'A' y 'E'.
+    - contadorA (int): Contador para las letras 'A'.
+    - contadorE (int): Contador para las letras 'E'.
+
+    Retorna:
+    str: 'Más letras 'A'' si hay más letras 'A', 'Más letras 'E'' si hay más letras 'E',
+         o 'Hay igual cantidad de letras 'A' y 'E'' si son iguales.
+    """
+    if not len(cadena):
+        if contadorA > contadorE:
+            return "Más letras 'A'"
+        elif contadorE > contadorA:
+            return "Más letras 'E'"
+        return "Hay igual cantidad de letras 'A' y 'E'"
+
+    if cadena[0].upper() == 'A':
+        return _más_A_o_más_E(cadena[1:], contadorA + 1, contadorE)
+    elif cadena[0].upper() == 'E':
+        return _más_A_o_más_E(cadena[1:], contadorA, contadorE + 1)
+    
+    # Si el carácter no es ni 'A' ni 'E', continúa con el siguiente carácter.
+    return _más_A_o_más_E(cadena[1:], contadorA, contadorE)
 
 # Otra posible idea... 🐱‍🏍
 # 

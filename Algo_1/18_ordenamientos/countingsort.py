@@ -1,3 +1,6 @@
+# Este algoritmo de ordenamiento es estable, 
+# ya que mantiene el orden relativo de elementos con claves iguales.
+
 def counting_sort(arr: list[int]) -> list[int]:
     # Encontrar el valor máximo en el array
     max_value = max(arr)
